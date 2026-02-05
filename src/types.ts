@@ -49,4 +49,5 @@ export interface TicketFilters {
     priority?: string;
     assigneeId?: string;
     sortBy?: 'date' | 'title' | 'priority' | 'dueDate';
+    dueThisWeek?: boolean;
 }

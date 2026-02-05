@@ -81,6 +81,19 @@ exports[`TicketFiltersComponent > renders search input and dropdowns 1`] = `
         Sort by Due Date
       </option>
     </select>
+    <div
+      class="filter-checkbox"
+    >
+      <input
+        id="dueThisWeek"
+        type="checkbox"
+      />
+      <label
+        for="dueThisWeek"
+      >
+        Due this week
+      </label>
+    </div>
   </div>
 </DocumentFragment>
 `;

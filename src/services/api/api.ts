@@ -105,6 +105,25 @@ export const fetchTickets = async (params?: TicketFilters): Promise<Ticket[]> =>
     filtered = filtered.filter(ticket => ticket.assigneeId === params.assigneeId);
   }
 
+  if (params?.dueThisWeek) {
+    const now = new Date();
+    // Start of week (Sunday)
+    const startOfWeek = new Date(now);
+    startOfWeek.setDate(now.getDate() - now.getDay());
+    startOfWeek.setHours(0, 0, 0, 0);
+
+    // End of week (Saturday)
+    const endOfWeek = new Date(startOfWeek);
+    endOfWeek.setDate(startOfWeek.getDate() + 6);
+    endOfWeek.setHours(23, 59, 59, 999);
+
+    filtered = filtered.filter(ticket => {
+      if (!ticket.dueDate) return false;
+      const dueDate = new Date(ticket.dueDate);
+      return dueDate >= startOfWeek && dueDate <= endOfWeek;
+    });
+  }
+
   // Sorting
   if (params?.sortBy === 'date') {
     filtered.sort((a, b) =>

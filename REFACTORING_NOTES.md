@@ -217,7 +217,7 @@ src/
 
 ### Additional Features
 - [x] Add Card view to show ticket detail - **Additional**
-- [x] Add due this week Filter - **Additional**
+- [x] Add Search, Status, Priority, Due Date, Due this week Filters, Sort by - **Additional**
 
 ### Good to have
 - [x] Replicate Checkbox Matter Management page UI or Jira-like UI - **Done**

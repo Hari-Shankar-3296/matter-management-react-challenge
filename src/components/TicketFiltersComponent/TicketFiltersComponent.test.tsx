@@ -24,11 +24,20 @@ describe('TicketFiltersComponent', () => {
         expect(asFragment()).toMatchSnapshot();
     });
 
-    it('calls onFilterChange when search input changes', () => {
+    it('calls onFilterChange when search input changes (debounced)', () => {
+        vi.useFakeTimers();
         renderFilters();
         const searchInput = screen.getByPlaceholderText(/Search/i);
         fireEvent.change(searchInput, { target: { value: 'bug' } });
+
+        // Should not be called immediately due to debounce
+        expect(mockOnFilterChange).not.toHaveBeenCalled();
+
+        // Advance time by 300ms
+        vi.advanceTimersByTime(300);
+
         expect(mockOnFilterChange).toHaveBeenCalledWith(expect.objectContaining({ search: 'bug' }));
+        vi.useRealTimers();
     });
 
     it('calls onFilterChange when status dropdown changes', () => {
@@ -36,5 +45,12 @@ describe('TicketFiltersComponent', () => {
         const statusSelect = screen.getByDisplayValue('All Status');
         fireEvent.change(statusSelect, { target: { value: 'open' } });
         expect(mockOnFilterChange).toHaveBeenCalledWith(expect.objectContaining({ status: 'open' }));
+    });
+
+    it('calls onFilterChange when dueThisWeek checkbox changes', () => {
+        renderFilters();
+        const checkbox = screen.getByLabelText(/Due this week/i);
+        fireEvent.click(checkbox);
+        expect(mockOnFilterChange).toHaveBeenCalledWith(expect.objectContaining({ dueThisWeek: true }));
     });
 });

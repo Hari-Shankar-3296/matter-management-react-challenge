@@ -1,14 +1,8 @@
-
+import { useState, useEffect } from 'react';
 import { TicketFilters } from '@/types';
 import { useSearchParams } from 'react-router-dom';
 import { TERMINOLOGY } from '@/constants';
 
-/**
- * Ticket Filters Component
- * 
- * TASK 5: Fixed - Removed Redux usage.
- * Now uses React useState for local state and URL params for shareable state.
- */
 interface TicketFiltersComponentProps {
     onFilterChange: (filters: TicketFilters) => void;
     initialFilters?: TicketFilters;
@@ -16,28 +10,54 @@ interface TicketFiltersComponentProps {
 
 const TicketFiltersComponent = ({ onFilterChange, initialFilters }: TicketFiltersComponentProps) => {
     const [searchParams, setSearchParams] = useSearchParams();
+    const [searchTerm, setSearchTerm] = useState(searchParams.get('search') || initialFilters?.search || '');
 
-    // Use URL params as source of truth (makes filters shareable)
-    const search = searchParams.get('search') || initialFilters?.search || '';
+    // Current filter values from URL
     const status = searchParams.get('status') || initialFilters?.status || '';
     const priority = searchParams.get('priority') || '';
     const sortBy = (searchParams.get('sortBy') || initialFilters?.sortBy || 'date') as 'date' | 'title' | 'priority' | 'dueDate';
+    const dueThisWeek = searchParams.get('dueThisWeek') === 'true';
 
-    const updateFilters = (key: string, value: string) => {
+    // Handle search debounce
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            const newParams = new URLSearchParams(searchParams);
+            if (searchTerm) {
+                newParams.set('search', searchTerm);
+            } else {
+                newParams.delete('search');
+            }
+            setSearchParams(newParams);
+
+            // Notify parent
+            onFilterChange({
+                search: searchTerm,
+                status,
+                priority,
+                sortBy,
+                dueThisWeek,
+            });
+        }, 300);
+
+        return () => clearTimeout(timer);
+    }, [searchTerm, status, priority, sortBy, dueThisWeek, setSearchParams]);
+
+    const updateFilters = (key: string, value: string | boolean) => {
         const newParams = new URLSearchParams(searchParams);
         if (value) {
-            newParams.set(key, value);
+            newParams.set(key, value.toString());
         } else {
             newParams.delete(key);
         }
         setSearchParams(newParams);
 
-        // Notify parent
+        // Notify parent immediately for non-search filters
         onFilterChange({
-            search: key === 'search' ? value : search,
-            status: key === 'status' ? value : status,
-            priority: key === 'priority' ? value : priority,
-            sortBy: (key === 'sortBy' ? value : sortBy) as 'date' | 'title' | 'priority' | 'dueDate',
+            search: searchTerm,
+            status: key === 'status' ? (value as string) : status,
+            priority: key === 'priority' ? (value as string) : priority,
+            sortBy: (key === 'sortBy' ? (value as string) : sortBy) as 'date' | 'title' | 'priority' | 'dueDate',
+            dueThisWeek: key === 'dueThisWeek' ? (value as boolean) : dueThisWeek,
         });
     };
 
@@ -46,8 +66,8 @@ const TicketFiltersComponent = ({ onFilterChange, initialFilters }: TicketFilter
             <input
                 type="text"
                 placeholder={`Search ${TERMINOLOGY.items}...`}
-                value={search}
-                onChange={(e) => updateFilters('search', e.target.value)}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
             />
             <select
                 value={status}
@@ -77,6 +97,15 @@ const TicketFiltersComponent = ({ onFilterChange, initialFilters }: TicketFilter
                 <option value="priority">Sort by Priority</option>
                 <option value="dueDate">Sort by Due Date</option>
             </select>
+            <div className="filter-checkbox">
+                <input
+                    type="checkbox"
+                    id="dueThisWeek"
+                    checked={dueThisWeek}
+                    onChange={(e) => updateFilters('dueThisWeek', e.target.checked)}
+                />
+                <label htmlFor="dueThisWeek" style={{ marginLeft: '10px' }}>Due this week</label>
+            </div>
         </div>
     );
 };

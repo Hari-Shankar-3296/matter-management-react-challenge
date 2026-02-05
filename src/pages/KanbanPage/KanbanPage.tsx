@@ -86,14 +86,6 @@ const KanbanPage = () => {
         setEditingTicket(null);
     };
 
-    if (isLoading) {
-        return <div className="loading">Loading {TERMINOLOGY.items}...</div>;
-    }
-
-    if (error) {
-        return <div className="error-message">Error loading {TERMINOLOGY.items}</div>;
-    }
-
     return (
         <div className="kanban-page">
             <div className="page-header">
@@ -103,19 +95,25 @@ const KanbanPage = () => {
                 </button>
             </div>
 
-            <div className="kanban-board">
-                {columns.map((column) => (
-                    <KanbanColumn
-                        key={column.status}
-                        status={column.status}
-                        title={column.title}
-                        tickets={tickets?.filter((t) => t.status === column.status) || []}
-                        onDrop={handleDrop}
-                        onEdit={handleEdit}
-                        onDelete={confirmDelete}
-                    />
-                ))}
-            </div>
+            {isLoading ? (
+                <div className="loading">Loading {TERMINOLOGY.items}...</div>
+            ) : error ? (
+                <div className="error-message">Error loading {TERMINOLOGY.items}</div>
+            ) : (
+                <div className="kanban-board">
+                    {columns.map((column) => (
+                        <KanbanColumn
+                            key={column.status}
+                            status={column.status}
+                            title={column.title}
+                            tickets={tickets?.filter((t) => t.status === column.status) || []}
+                            onDrop={handleDrop}
+                            onEdit={handleEdit}
+                            onDelete={confirmDelete}
+                        />
+                    ))}
+                </div>
+            )}
 
             <Modal
                 isOpen={isModalOpen}

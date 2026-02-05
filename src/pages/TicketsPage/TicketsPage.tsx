@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useTickets, useUpdateTicket, useDeleteTicket, useCreateTicket } from '@/hooks/useTickets/useTickets';
 import { useUsers } from '@/hooks/useUsers/useUsers';
@@ -13,12 +13,6 @@ import TicketDetail from '@/components/TicketDetail/TicketDetail';
 
 const TicketsPage = () => {
     const [searchParams] = useSearchParams();
-    const [filters, setFilters] = useState<TicketFilters>({
-        search: searchParams.get('search') || undefined,
-        status: (searchParams.get('status') as TicketStatus) || undefined,
-        priority: (searchParams.get('priority') as TicketPriority) || undefined,
-        sortBy: (searchParams.get('sortBy') as 'date' | 'title' | 'priority' | 'dueDate') || 'date',
-    });
     const [selectedTicketId, setSelectedTicketId] = useState<string | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -26,17 +20,15 @@ const TicketsPage = () => {
     const [editingTicket, setEditingTicket] = useState<Ticket | null>(null);
     const [isUpdateConfirmOpen, setIsUpdateConfirmOpen] = useState(false);
     const [pendingUpdateData, setPendingUpdateData] = useState<Partial<Ticket> | null>(null);
-    const [, setSearchParams] = useSearchParams();
 
-    useEffect(() => {
-        const params: Record<string, string> = {};
-        if (filters.search) params.search = filters.search;
-        if (filters.status && filters.status !== 'all') params.status = filters.status;
-        if (filters.priority && filters.priority !== 'all') params.priority = filters.priority;
-        if (filters.sortBy) params.sortBy = filters.sortBy;
-
-        setSearchParams(params, { replace: true });
-    }, [filters, setSearchParams]);
+    // Derived filters from URL (Source of Truth)
+    const filters: TicketFilters = {
+        search: searchParams.get('search') || undefined,
+        status: (searchParams.get('status') as TicketStatus) || undefined,
+        priority: (searchParams.get('priority') as TicketPriority) || undefined,
+        sortBy: (searchParams.get('sortBy') as 'date' | 'title' | 'priority' | 'dueDate') || 'date',
+        dueThisWeek: searchParams.get('dueThisWeek') === 'true',
+    };
 
     const { data: tickets, isLoading, error } = useTickets(filters);
     const { data: users } = useUsers();
@@ -52,8 +44,8 @@ const TicketsPage = () => {
         return user ? `${user.firstName} ${user.lastName}` : 'Unknown';
     };
 
-    const handleFilterChange = (newFilters: TicketFilters) => {
-        setFilters(newFilters);
+    const handleFilterChange = () => {
+        // No local state update needed, URL params drive the hook
     };
 
     const handleAddNew = () => {
@@ -122,14 +114,6 @@ const TicketsPage = () => {
         setEditingTicket(null);
     };
 
-    if (isLoading) {
-        return <div className="loading">Loading {TERMINOLOGY.items}...</div>;
-    }
-
-    if (error) {
-        return <div className="error-message">Error loading {TERMINOLOGY.items}</div>;
-    }
-
     return (
         <div className="tickets-page">
             <div className="ticket-list-section">
@@ -145,13 +129,19 @@ const TicketsPage = () => {
                     initialFilters={filters}
                 />
 
-                <TicketList
-                    tickets={tickets || []}
-                    selectedId={selectedTicketId}
-                    onSelect={(ticket) => setSelectedTicketId(ticket.id)}
-                    onEdit={handleEdit}
-                    onDelete={confirmDelete}
-                />
+                {isLoading ? (
+                    <div className="loading">Loading {TERMINOLOGY.items}...</div>
+                ) : error ? (
+                    <div className="error-message">Error loading {TERMINOLOGY.items}</div>
+                ) : (
+                    <TicketList
+                        tickets={tickets || []}
+                        selectedId={selectedTicketId}
+                        onSelect={(ticket) => setSelectedTicketId(ticket.id)}
+                        onEdit={handleEdit}
+                        onDelete={confirmDelete}
+                    />
+                )}
             </div>
 
             <div className="ticket-detail-section">

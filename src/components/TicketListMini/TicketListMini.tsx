@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Ticket } from '@/types';
 import { TERMINOLOGY } from '@/constants';
 
@@ -13,9 +14,9 @@ const TicketListMini = ({ tickets, title, viewAllLink }: TicketListMiniProps) =>
             <div className="section-header">
                 <h3>{title}</h3>
                 {viewAllLink && (
-                    <a href={viewAllLink} className="link">
+                    <Link to={viewAllLink} className="link">
                         View All →
-                    </a>
+                    </Link>
                 )}
             </div>
             <div className="ticket-list-mini">

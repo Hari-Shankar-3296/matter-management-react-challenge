@@ -65,6 +65,24 @@ describe('api service', () => {
                 expect(dates[i]).toBeLessThanOrEqual(dates[i + 1]);
             }
         });
+
+        it('should filter by dueThisWeek', async () => {
+            const tickets = await fetchTickets({ dueThisWeek: true });
+            // Based on mock data: ticket-1 and ticket-4 are due this week
+            expect(tickets.length).toBeGreaterThan(0);
+            const now = new Date();
+            const startOfWeek = new Date(now);
+            startOfWeek.setDate(now.getDate() - now.getDay());
+            startOfWeek.setHours(0, 0, 0, 0);
+            const endOfWeek = new Date(startOfWeek);
+            endOfWeek.setDate(startOfWeek.getDate() + 6);
+            endOfWeek.setHours(23, 59, 59, 999);
+
+            expect(tickets.every(t => {
+                const dueDate = new Date(t.dueDate!);
+                return dueDate >= startOfWeek && dueDate <= endOfWeek;
+            })).toBe(true);
+        });
     });
     describe('fetchTicketById', () => {
         it('should fetch a ticket by ID', async () => {

@@ -74,14 +74,6 @@ const MyTicketsPage = () => {
         setEditingTicket(null);
     };
 
-    if (isLoading) {
-        return <div className="loading">Loading your {TERMINOLOGY.items}...</div>;
-    }
-
-    if (error) {
-        return <div className="error-message">Error loading your {TERMINOLOGY.items}</div>;
-    }
-
     const tickets = activeTab === 'assigned' ? myTickets?.assigned : myTickets?.reported;
 
     return (
@@ -105,12 +97,18 @@ const MyTicketsPage = () => {
                 </button>
             </div>
 
-            <TicketTable
-                tickets={tickets}
-                activeTab={activeTab}
-                onEdit={handleEdit}
-                onDelete={confirmDelete}
-            />
+            {isLoading ? (
+                <div className="loading">Loading your {TERMINOLOGY.items}...</div>
+            ) : error ? (
+                <div className="error-message">Error loading your {TERMINOLOGY.items}</div>
+            ) : (
+                <TicketTable
+                    tickets={tickets}
+                    activeTab={activeTab}
+                    onEdit={handleEdit}
+                    onDelete={confirmDelete}
+                />
+            )}
 
             <Modal
                 isOpen={isModalOpen}
