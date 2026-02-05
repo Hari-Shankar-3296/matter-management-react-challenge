@@ -232,7 +232,7 @@ src/
 - [x] Enable user to switch themes
 
 ### Extras
-- [ ] Add Unit Tests with Jest and RTL
+- [x] Add Unit Tests with vite, Jest and RTL
 - [x] tried to acheive UI Consistency across OS/browsers (Input fields, Buttons)
 
 ---
