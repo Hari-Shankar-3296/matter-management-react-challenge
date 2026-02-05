@@ -244,4 +244,5 @@ src/
 1. **Used AI tools for Fast paced development**: Used Claude Opus, Chatgpt, Gemini to develop quick (like a pro - kidding) like working in a fast paced environment
 2. **User Service**: Added user service file to my convenience
 3. **UI Inspiration**: Tried to replicate most of the features from Checkbox.ai matter management demo page and tried my best to replicate the UI to give similar feel
+4. **Devlopment Environment**: Developed in macbook, didn't get much time to verify the UI in windows, Please try to use macbook to view the demo or look for the UI Screen shots attached folder in assets. Please try to run the app in your environment and let me know if you find any issues
 
