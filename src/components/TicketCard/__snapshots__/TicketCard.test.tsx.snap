@@ -1,0 +1,77 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TicketCard Component > renders ticket information correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="ticket-card "
+  >
+    <div
+      class="ticket-card-header"
+    >
+      <div
+        style="display: flex; align-items: center; gap: 8px; flex: 1 1 0%; min-width: 0;"
+      >
+        <span
+          class="ticket-card-title"
+          style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+        >
+          Test Ticket
+        </span>
+      </div>
+      <div
+        class="ticket-card-actions"
+      >
+        <button
+          class="action-btn"
+        >
+          ✏️
+        </button>
+        <button
+          class="action-btn delete"
+        >
+          🗑️
+        </button>
+      </div>
+    </div>
+    <div
+      class="ticket-card-meta"
+    >
+      <div
+        style="display: flex; gap: 8px; align-items: center; position: relative;"
+      >
+        <div
+          data-testid="badge"
+        >
+          open
+        </div>
+        <div
+          data-testid="badge"
+        >
+          high
+        </div>
+        <span
+          class="ticket-card-date"
+        >
+          Oct 25, 2023
+        </span>
+        <div
+          style="position: absolute; right: 8px; display: flex; align-items: center; gap: 8px;"
+        >
+          <p
+            class="ticket-card-date"
+          >
+            Assigned to 
+          </p>
+          <div>
+            <div
+              data-testid="assignee-selector"
+            >
+              AssigneeSelector
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

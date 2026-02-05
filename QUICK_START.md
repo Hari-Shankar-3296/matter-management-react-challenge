@@ -106,6 +106,17 @@ npm run test:ui
 npm run lint
 ```
 
+### Format code
+```bash
+npm run format
+```
+
+### Verify and Deploy (Combined)
+```bash
+npm run verify-deploy
+```
+This single command will format, lint, test, build, and deploy your application in one go.
+
 ## What to Expect
 
 When you run the app, you should see:

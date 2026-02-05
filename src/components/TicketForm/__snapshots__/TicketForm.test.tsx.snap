@@ -1,0 +1,167 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TicketForm Component > renders form fields correctly for creation 1`] = `
+<DocumentFragment>
+  <form
+    class="ticket-form"
+  >
+    <div
+      class="form-group"
+    >
+      <label
+        for="title"
+      >
+        Title *
+      </label>
+      <input
+        class=""
+        id="title"
+        placeholder="Enter matter title"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      class="form-group"
+    >
+      <label
+        for="description"
+      >
+        Description
+      </label>
+      <textarea
+        id="description"
+        placeholder="Enter matter description"
+        rows="4"
+      />
+      <div
+        style="text-align: right; font-size: 0.75rem; color: var(--text-muted);"
+      >
+        0/500
+      </div>
+    </div>
+    <div
+      class="form-row"
+    >
+      <div
+        class="form-group"
+      >
+        <label
+          for="status"
+        >
+          Status
+        </label>
+        <select
+          id="status"
+        >
+          <option
+            value="open"
+          >
+            Open
+          </option>
+          <option
+            value="in-progress"
+          >
+            In Progress
+          </option>
+          <option
+            value="closed"
+          >
+            Closed
+          </option>
+        </select>
+      </div>
+      <div
+        class="form-group"
+      >
+        <label
+          for="priority"
+        >
+          Priority
+        </label>
+        <select
+          id="priority"
+        >
+          <option
+            value="low"
+          >
+            Low
+          </option>
+          <option
+            value="medium"
+          >
+            Medium
+          </option>
+          <option
+            value="high"
+          >
+            High
+          </option>
+          <option
+            value="critical"
+          >
+            Critical
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      class="form-row"
+    >
+      <div
+        class="form-group"
+      >
+        <label
+          for="assignee"
+        >
+          Assignee
+        </label>
+        <select
+          id="assignee"
+        >
+          <option
+            value=""
+          >
+            -- Unassigned --
+          </option>
+          <option
+            value="user-1"
+          >
+            John Doe
+          </option>
+        </select>
+      </div>
+      <div
+        class="form-group"
+      >
+        <label
+          for="dueDate"
+        >
+          Due Date
+        </label>
+        <input
+          id="dueDate"
+          type="date"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      class="form-actions"
+    >
+      <button
+        class="btn btn-secondary"
+        type="button"
+      >
+        Cancel
+      </button>
+      <button
+        class="btn btn-primary"
+        type="submit"
+      >
+        Create Matter
+      </button>
+    </div>
+  </form>
+</DocumentFragment>
+`;

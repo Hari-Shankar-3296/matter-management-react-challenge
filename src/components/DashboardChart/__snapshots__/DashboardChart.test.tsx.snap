@@ -1,0 +1,41 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`DashboardChart > renders bar chart with title 1`] = `
+<DocumentFragment>
+  <div
+    class="chart-card"
+  >
+    <h3>
+      Priority Summary
+    </h3>
+    <div
+      style="width: 800px; height: 400px;"
+    >
+      <div
+        class="recharts-wrapper"
+        style="position: relative; cursor: default;"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`DashboardChart > renders pie chart with title 1`] = `
+<DocumentFragment>
+  <div
+    class="chart-card"
+  >
+    <h3>
+      Status Distribution
+    </h3>
+    <div
+      style="width: 800px; height: 400px;"
+    >
+      <div
+        class="recharts-wrapper"
+        style="position: relative; cursor: default;"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

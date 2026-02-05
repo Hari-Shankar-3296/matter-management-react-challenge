@@ -1,0 +1,58 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ConfirmationModal > renders all labels and messages correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="modal-overlay"
+  >
+    <div
+      class="modal"
+    >
+      <div
+        class="modal-header"
+      >
+        <h2
+          class="modal-title"
+        >
+          Delete Matter
+        </h2>
+        <button
+          aria-label="Close modal"
+          class="modal-close"
+        >
+          ×
+        </button>
+      </div>
+      <div
+        class="modal-content"
+      >
+        <div
+          class="confirmation-content"
+          style="padding: 1.5rem;"
+        >
+          <pre
+            style="margin-bottom: 1.5rem; color: var(--text-secondary); font-family: inherit; white-space: pre-wrap; text-align: center;"
+          >
+            Are you sure you want to delete this matter?
+          </pre>
+          <div
+            class="form-actions"
+            style="display: flex; justify-content: center; margin-top: 20px; padding-top: 0px; border-top: medium;"
+          >
+            <button
+              class="btn btn-secondary"
+            >
+              Cancel
+            </button>
+            <button
+              class="btn btn-primary"
+            >
+              Yes, Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

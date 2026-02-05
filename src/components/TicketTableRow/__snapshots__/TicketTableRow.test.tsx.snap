@@ -1,0 +1,64 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TicketTableRow > renders ticket data correctly 1`] = `
+<DocumentFragment>
+  <table>
+    <tbody>
+      <tr>
+        <td
+          class="ticket-id-cell"
+        >
+          #1
+        </td>
+        <td
+          class="ticket-title-cell"
+        >
+          Test Ticket
+        </td>
+        <td>
+          <div
+            data-testid="badge"
+          >
+            open
+          </div>
+        </td>
+        <td>
+          <div
+            data-testid="badge"
+          >
+            high
+          </div>
+        </td>
+        <td>
+          <div>
+            <div
+              data-testid="assignee-selector"
+            >
+              AssigneeSelector
+            </div>
+          </div>
+        </td>
+        <td>
+          Oct 25, 2023
+        </td>
+        <td>
+          <div
+            class="table-actions"
+          >
+            <button
+              class="action-btn"
+            >
+              ✏️
+            </button>
+            <button
+              class="action-btn delete"
+            >
+              🗑️
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</DocumentFragment>
+`;

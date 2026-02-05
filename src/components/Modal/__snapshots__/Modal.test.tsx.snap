@@ -1,0 +1,36 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Modal Component > renders correctly when isOpen is true 1`] = `
+<DocumentFragment>
+  <div
+    class="modal-overlay"
+  >
+    <div
+      class="modal"
+    >
+      <div
+        class="modal-header"
+      >
+        <h2
+          class="modal-title"
+        >
+          Test Modal
+        </h2>
+        <button
+          aria-label="Close modal"
+          class="modal-close"
+        >
+          ×
+        </button>
+      </div>
+      <div
+        class="modal-content"
+      >
+        <div>
+          Modal Content
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

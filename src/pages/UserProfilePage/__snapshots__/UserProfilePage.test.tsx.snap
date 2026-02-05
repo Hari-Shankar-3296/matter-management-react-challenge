@@ -1,0 +1,121 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`UserProfilePage > renders user profile and ticket stats 1`] = `
+<DocumentFragment>
+  <div
+    class="profile-page"
+  >
+    <div
+      class="profile-card"
+    >
+      <div
+        class="profile-header"
+      >
+        <div
+          class="profile-avatar"
+        >
+          JD
+        </div>
+        <div
+          class="profile-info"
+        >
+          <h1>
+            John Doe
+          </h1>
+          <p
+            class="profile-email"
+          >
+            john@example.com
+          </p>
+        </div>
+      </div>
+      <div
+        class="profile-section"
+      >
+        <h3>
+          Account Details
+        </h3>
+        <div
+          class="profile-details"
+        >
+          <div
+            class="detail-row"
+          >
+            <span
+              class="detail-label"
+            >
+              User ID
+            </span>
+            <span
+              class="detail-value"
+            >
+              1
+            </span>
+          </div>
+          <div
+            class="detail-row"
+          >
+            <span
+              class="detail-label"
+            >
+              First Name
+            </span>
+            <span
+              class="detail-value"
+            >
+              John
+            </span>
+          </div>
+          <div
+            class="detail-row"
+          >
+            <span
+              class="detail-label"
+            >
+              Last Name
+            </span>
+            <span
+              class="detail-value"
+            >
+              Doe
+            </span>
+          </div>
+          <div
+            class="detail-row"
+          >
+            <span
+              class="detail-label"
+            >
+              Email
+            </span>
+            <span
+              class="detail-value"
+            >
+              john@example.com
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="profile-section"
+      >
+        <h3>
+          Team Members
+        </h3>
+        <div
+          class="team-list"
+        />
+      </div>
+      <div
+        class="profile-actions"
+      >
+        <button
+          class="btn btn-secondary"
+        >
+          Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

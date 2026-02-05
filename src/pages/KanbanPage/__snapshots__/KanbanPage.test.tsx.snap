@@ -1,0 +1,65 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`KanbanPage > renders kanban board with columns 1`] = `
+<DocumentFragment>
+  <div
+    class="kanban-page"
+  >
+    <div
+      class="page-header"
+    >
+      <h1>
+        Kanban Board
+      </h1>
+      <button
+        class="btn btn-primary"
+      >
+        + Add Matter
+      </button>
+    </div>
+    <div
+      class="kanban-board"
+    >
+      <div
+        data-testid="kanban-column"
+      >
+        <h3>
+          Open
+        </h3>
+        <div>
+          Ticket 1
+          <button>
+            Edit
+          </button>
+          <button>
+            Delete
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid="kanban-column"
+      >
+        <h3>
+          In Progress
+        </h3>
+        <div>
+          Ticket 2
+          <button>
+            Edit
+          </button>
+          <button>
+            Delete
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid="kanban-column"
+      >
+        <h3>
+          Closed
+        </h3>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

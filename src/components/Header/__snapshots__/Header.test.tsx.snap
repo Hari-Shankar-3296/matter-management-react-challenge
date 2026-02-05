@@ -1,0 +1,94 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Header Component > renders the app logo and name 1`] = `
+<DocumentFragment>
+  <header
+    class="header"
+  >
+    <div
+      class="header-container"
+    >
+      <a
+        aria-current="page"
+        class="header-logo active"
+        href="/"
+      >
+        <div
+          style="height: 50px; width: 220px; background-color: rgb(0, 0, 0); display: flex; align-items: center; justify-content: center; border-radius: 10px;"
+        >
+          <img
+            alt="Logo"
+            src="mock-logo-url"
+            style="height: 40px; width: 200px;"
+          />
+        </div>
+        <span
+          class="logo-text"
+        >
+          Matter Management
+        </span>
+      </a>
+      <nav
+        class="header-nav"
+      >
+        <a
+          aria-current="page"
+          class="nav-link active"
+          href="/"
+        >
+          Dashboard
+        </a>
+        <a
+          class="nav-link "
+          href="/tickets"
+        >
+          Matters
+        </a>
+        <a
+          class="nav-link "
+          href="/kanban"
+        >
+          Kanban Board
+        </a>
+        <a
+          class="nav-link "
+          href="/my-tickets"
+        >
+          My Matters
+        </a>
+      </nav>
+      <div
+        class="header-actions"
+      >
+        <div
+          class="theme-switch"
+        >
+          <span
+            class="theme-switch-icon light"
+          >
+            ☀️
+          </span>
+          <span
+            class="theme-switch-icon dark"
+          >
+            🌙
+          </span>
+          <div
+            class="theme-switch-handle"
+          />
+        </div>
+        <div
+          class="user-menu-container"
+        >
+          <button
+            class="avatar-circle user-avatar-btn "
+            title="Harishankar Devaraj"
+          >
+            HD
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+</DocumentFragment>
+`;

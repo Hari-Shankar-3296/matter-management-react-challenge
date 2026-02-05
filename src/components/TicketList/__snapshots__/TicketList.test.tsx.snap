@@ -1,0 +1,31 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TicketList > renders empty state when no tickets 1`] = `
+<DocumentFragment>
+  <div
+    class="empty-state"
+  >
+    No matters found
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TicketList > renders list of tickets 1`] = `
+<DocumentFragment>
+  <div
+    class="ticket-list"
+    style="max-height: 65vh; overflow-y: auto;"
+  >
+    <div
+      data-testid="ticket-card"
+    >
+      Ticket 1
+    </div>
+    <div
+      data-testid="ticket-card"
+    >
+      Ticket 2
+    </div>
+  </div>
+</DocumentFragment>
+`;
