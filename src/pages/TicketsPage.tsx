@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useTickets, useUpdateTicket, useDeleteTicket, useCreateTicket } from '../hooks/useTickets';
 import { useUsers } from '../hooks/useUsers';
 import { Ticket, TicketStatus, TicketFilters, TicketPriority } from '../types';
@@ -11,7 +12,13 @@ import { TERMINOLOGY } from '../constants';
 import AssigneeSelector from '../components/AssigneeSelector';
 
 const TicketsPage = () => {
-    const [filters, setFilters] = useState<TicketFilters>({});
+    const [searchParams] = useSearchParams();
+    const [filters, setFilters] = useState<TicketFilters>({
+        search: searchParams.get('search') || undefined,
+        status: (searchParams.get('status') as TicketStatus) || undefined,
+        priority: (searchParams.get('priority') as TicketPriority) || undefined,
+        sortBy: (searchParams.get('sortBy') as any) || 'date',
+    });
     const [selectedTicketId, setSelectedTicketId] = useState<string | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
