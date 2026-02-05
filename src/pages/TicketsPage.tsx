@@ -8,6 +8,7 @@ import ConfirmationModal from '../components/ConfirmationModal';
 import TicketForm from '../components/TicketForm';
 import { formatDate, isDueThisWeek, isOverdue } from '../utils/dateUtils';
 import { TERMINOLOGY } from '../constants';
+import AssigneeSelector from '../components/AssigneeSelector';
 
 const TicketsPage = () => {
     const [filters, setFilters] = useState<TicketFilters>({});
@@ -31,12 +32,6 @@ const TicketsPage = () => {
         if (!userId) return 'Unassigned';
         const user = users?.find((u) => u.id === userId);
         return user ? `${user.firstName} ${user.lastName}` : 'Unknown';
-    };
-
-    const getUserInitials = (userId: string | undefined) => {
-        if (!userId) return null;
-        const user = users?.find((u) => u.id === userId);
-        return user ? `${user.firstName[0]}${user.lastName[0]}`.toUpperCase() : null;
     };
 
     const handleFilterChange = (newFilters: TicketFilters) => {
@@ -130,7 +125,6 @@ const TicketsPage = () => {
 
                 <div className="ticket-list" style={{ maxHeight: '65vh', overflowY: 'auto' }}>
                     {tickets?.map((ticket) => {
-                        const assigneeInitials = getUserInitials(ticket.assigneeId);
                         const dueThisWeek = isDueThisWeek(ticket.dueDate);
                         const overdue = isOverdue(ticket.dueDate);
 
@@ -184,25 +178,15 @@ const TicketsPage = () => {
                                         <span className="ticket-card-date">
                                             {formatDate(ticket.createdAt)}
                                         </span>
-                                        {assigneeInitials && (
-                                            <div style={{ position: 'absolute', right: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                                <p className='ticket-card-date'>Assigned to </p>
-                                                <div title={`Assigned to ${getUserName(ticket.assigneeId)}`} style={{
-                                                    width: '24px',
-                                                    height: '24px',
-                                                    borderRadius: '50%',
-                                                    background: 'var(--primary-500)',
-                                                    color: 'white',
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    justifyContent: 'center',
-                                                    fontSize: '0.7rem',
-                                                    fontWeight: 'bold'
-                                                }}>
-                                                    {assigneeInitials}
-                                                </div>
+                                        <div style={{ position: 'absolute', right: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                            <p className='ticket-card-date'>Assigned to </p>
+                                            <div onClick={(e) => e.stopPropagation()}>
+                                                <AssigneeSelector
+                                                    ticketId={ticket.id}
+                                                    currentAssigneeId={ticket.assigneeId}
+                                                />
                                             </div>
-                                        )}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -219,11 +203,12 @@ const TicketsPage = () => {
                     <div className="ticket-detail">
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                             <h2>{selectedTicket.title}</h2>
-                            {getUserInitials(selectedTicket.assigneeId) && (
-                                <div className="user-avatar-btn" style={{ width: '48px', height: '48px', fontSize: '1.2rem', cursor: 'default' }} title={`Assigned to ${getUserName(selectedTicket.assigneeId)}`}>
-                                    {getUserInitials(selectedTicket.assigneeId)}
-                                </div>
-                            )}
+                            <div onClick={(e) => e.stopPropagation()}>
+                                <AssigneeSelector
+                                    ticketId={selectedTicket.id}
+                                    currentAssigneeId={selectedTicket.assigneeId}
+                                />
+                            </div>
                         </div>
 
                         <div className="ticket-meta">
@@ -249,7 +234,10 @@ const TicketsPage = () => {
                             </div>
                             <div className="ticket-meta-item">
                                 <span className="ticket-meta-label">Assignee</span>
-                                <span>{getUserName(selectedTicket.assigneeId)}</span>
+                                <AssigneeSelector
+                                    ticketId={selectedTicket.id}
+                                    currentAssigneeId={selectedTicket.assigneeId}
+                                />
                             </div>
                             <div className="ticket-meta-item">
                                 <span className="ticket-meta-label">Created</span>

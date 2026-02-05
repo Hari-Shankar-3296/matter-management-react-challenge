@@ -1,6 +1,6 @@
 import { Ticket } from '../types';
 import { isDueThisWeek, isOverdue, formatDate } from '../utils/dateUtils';
-import { useUsers } from '../hooks/useUsers';
+import AssigneeSelector from './AssigneeSelector';
 
 interface KanbanCardProps {
     ticket: Ticket;
@@ -9,7 +9,6 @@ interface KanbanCardProps {
 }
 
 const KanbanCard = ({ ticket, onEdit, onDelete }: KanbanCardProps) => {
-    const { data: users } = useUsers();
 
     const handleDragStart = (e: React.DragEvent) => {
         e.dataTransfer.setData('ticketId', ticket.id);
@@ -20,10 +19,7 @@ const KanbanCard = ({ ticket, onEdit, onDelete }: KanbanCardProps) => {
     const overdue = isOverdue(ticket.dueDate);
 
     // Get assignee initials
-    const assignee = users?.find(u => u.id === ticket.assigneeId);
-    const assigneeInitials = assignee
-        ? `${assignee.firstName[0]}${assignee.lastName[0]}`.toUpperCase()
-        : null;
+
 
     return (
         <div
@@ -90,22 +86,13 @@ const KanbanCard = ({ ticket, onEdit, onDelete }: KanbanCardProps) => {
                     )}
                 </div>
 
-                {assigneeInitials && (
-                    <div title={`Assigned to ${assignee?.firstName} ${assignee?.lastName}`} style={{
-                        width: '24px',
-                        height: '24px',
-                        borderRadius: '50%',
-                        background: 'var(--primary-500)',
-                        color: 'white',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '0.7rem',
-                        fontWeight: 'bold',
-                    }}>
-                        {assigneeInitials}
-                    </div>
-                )}
+                <div onClick={(e) => e.stopPropagation()}>
+                    <AssigneeSelector
+                        ticketId={ticket.id}
+                        currentAssigneeId={ticket.assigneeId}
+                        onUpdate={() => { }} // Optional: trigger a refresh if needed, but react-query should handle it
+                    />
+                </div>
             </div>
         </div>
     );

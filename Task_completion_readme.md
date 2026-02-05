@@ -19,9 +19,6 @@ Used CSS custom properties (variables) for theming. The `data-theme` attribute o
 - Works with CSS transitions
 - Is maintainable (all theme colors in one place)
 
-### Color change: Blue → Green
-Changed primary color from `#6366f1` (indigo) to `#10b981` (emerald green). Updated all gradients and accent colors.
-
 ---
 
 ## 2. Multi-User Authentication
@@ -154,7 +151,6 @@ src/
 ├── utils/          # Utility functions
 ├── constants.ts    # TypeScript constants
 └── types.ts        # TypeScript types
-and more
 ```
 
 ---
@@ -187,9 +183,65 @@ and more
 
 ---
 
+## More changes
+
+1. **Removed useGetUserProfile Hook**: Created useUser hook to fetch user profile and all users from API (mocked)
+2. **Added Validations**: Added validations for ticket creation and editing
+3. **Added assignee selector**: Added assignee selector to update ticket assignee using react portal. Update can be done by clicking on the assignee name in the ticket card or in the ticket detail view. Reporter cannot be edited.
+
+---
+
 ## Trade-offs Considered
 
 1. **CSS-in-JS vs CSS files**: Chose CSS files for better performance and easier theming, will be simplifying for larger apps
 2. **Redux vs Context**: Chose Context for auth/theme since state is simple
 3. **Recharts vs Chart.js**: Chose Recharts for better React integration
 4. **Component CSS files vs single CSS**: Single file for demo simplicity; would split for larger apps
+
+## Considerations and Acheived
+
+### Goals
+- [x] Add custom Hooks
+- [x] Refactor tech debts
+- [x] Refactor legacy code base
+- [x] Review hooks and remove unnecessary hooks and optimizations
+- [x] Fix circular dependency in useEffects and React query callbacks
+- [x] Complete all Tasks
+
+### Things to do
+- [x] Split in folder structures - **Mandatory**
+- [x] Remove slice file and use react state - **Mandatory**
+- [x] Remove redux - **Mandatory**
+- [x] Update to centralised query key - **Mandatory**
+- [x] Add and consume Custom Hooks properly (e.g., `useUsers`, `useTicketList`) - **Mandatory**
+
+### Additional Features
+- [x] Add Card view to show ticket detail - **Additional**
+- [x] Add due this week Filter - **Additional**
+
+### Good to have
+- [x] Replicate Checkbox Matter Management page UI or Jira-like UI - **Done**
+- [x] Add, Edit and Delete Ticket feature - **Done**
+- [x] Add details like Priority, Reporter, Assignee, Id, Due Date, Created Date to Table view - **Done**
+- [ ] Change status with resolution reason modal - **Done** (Partially implemented via Edit, can be added in description for now, thought to add once the card is closed)
+- [x] All Boards page (Kanban D&D, Table View) - **Done**
+- [x] Analytics page (Charts with sample data) - **Done**
+- [ ] Add Views - Thought of adding this but the scope increased - so I dropped it
+- [x] Add Personal Views/Matter (My Matters page - shows user specific tickets)
+- [x] Delete/Edit matter modal confirmation (Theme consistent)
+- [x] Enable user to switch themes
+
+### Extras
+- [ ] Add Unit Tests with Jest and RTL
+- [x] UI Consistency across OS/browsers (Input fields, Buttons)
+- [ ] Use Select Box from a Component library
+- [ ] Use date picker from a Component library
+
+---
+
+## Note
+
+1. **Used AI tools for Fast paced development**: Used Claude Opus, Chatgpt, Gemini to develop quick (like a pro - kidding) like working in a fast paced environment
+2. **User Service**: Added user service file to my convenience
+3. **UI Inspiration**: Tried to replicate most of the features from Checkbox.ai matter management demo page and tried my best to replicate the UI to give similar feel
+

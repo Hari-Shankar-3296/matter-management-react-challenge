@@ -1,18 +1,17 @@
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useMyTickets, useUpdateTicket, useDeleteTicket } from '../hooks/useTickets';
-import { useUsers } from '../hooks/useUsers';
 import { Ticket, TicketStatus, TicketPriority } from '../types';
 import Modal from '../components/Modal';
 import ConfirmationModal from '../components/ConfirmationModal';
 import TicketForm from '../components/TicketForm';
 import { formatDate, isDueThisWeek, isOverdue } from '../utils/dateUtils';
 import { TERMINOLOGY } from '../constants';
+import AssigneeSelector from '../components/AssigneeSelector';
 
 const MyTicketsPage = () => {
     useAuth(); // Used for auth check
     const { data: myTickets, isLoading } = useMyTickets();
-    const { data: users } = useUsers();
     const updateTicket = useUpdateTicket();
     const deleteTicket = useDeleteTicket();
 
@@ -24,11 +23,7 @@ const MyTicketsPage = () => {
     const [isUpdateConfirmOpen, setIsUpdateConfirmOpen] = useState(false);
     const [pendingUpdateData, setPendingUpdateData] = useState<any>(null);
 
-    const getUserName = (userId: string | undefined) => {
-        if (!userId) return 'Unassigned';
-        const u = users?.find((u) => u.id === userId);
-        return u ? `${u.firstName} ${u.lastName}` : 'Unknown';
-    };
+
 
     const handleEdit = (ticket: Ticket) => {
         setEditingTicket(ticket);
@@ -147,9 +142,13 @@ const MyTicketsPage = () => {
                                         </span>
                                     </td>
                                     <td>
-                                        {getUserName(
-                                            activeTab === 'assigned' ? ticket.reporterId : ticket.assigneeId
-                                        )}
+                                        <div onClick={(e) => e.stopPropagation()}>
+                                            <AssigneeSelector
+                                                ticketId={ticket.id}
+                                                currentAssigneeId={activeTab === 'assigned' ? ticket.reporterId : ticket.assigneeId}
+                                                readonly={activeTab === 'assigned'}
+                                            />
+                                        </div>
                                     </td>
                                     <td>{ticket.dueDate ? formatDate(ticket.dueDate) : '-'}</td>
                                     <td>
