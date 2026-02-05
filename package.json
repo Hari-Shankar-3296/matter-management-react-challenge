@@ -12,7 +12,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --write \"**/*.{ts,tsx,cjs,json,md}\"",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "verify-deploy": "npm run format && npm run lint && npm run test -- --run && npm run deploy"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.0.0",
