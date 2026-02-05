@@ -1,62 +1,28 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTicketList } from '../../hooks/useTicketList';
 import TicketCard from '../../components/TicketCard';
 
 /**
- * TASK 2: This component has problematic useEffect usage
+ * TASK 2: Fixed - Removed circular dependency useEffects
  * 
- * Issues to fix:
- * 1. Circular dependencies between useEffects
- * 2. Side effects that should use React Query callbacks
- * 3. Unnecessary useEffect for derived state
+ * Changes made:
+ * 1. Removed Effect 2 (manual refetch) - React Query auto-refetches when query key changes
+ * 2. Removed Effect 3 & 4 (circular deps) - Notification count is now derived, not state
+ * 3. Removed Effect 5 (success logging) - Use React Query's onSuccess callback if needed
+ * 4. Kept Effect 1 simplified - notification count is now a derived value
  */
 const TicketList = () => {
   const [selectedTicketId, setSelectedTicketId] = useState<string | null>(null);
   const [filterStatus, setFilterStatus] = useState<string>('all');
-  const [notificationCount, setNotificationCount] = useState(0);
 
-  const { data: tickets, isLoading, refetch } = useTicketList({
+  // React Query auto-refetches when the query key (including filterStatus) changes
+  const { data: tickets, isLoading } = useTicketList({
     status: filterStatus === 'all' ? undefined : filterStatus,
   });
 
-  // Effect 1: Update notification count when tickets change
-  useEffect(() => {
-    if (tickets) {
-      const unreadCount = tickets.filter((t) => !t.read).length;
-      setNotificationCount(unreadCount);
-    }
-  }, [tickets]);
-
-  // Effect 2: Refetch when filter changes
-  useEffect(() => {
-    refetch();
-  }, [filterStatus, refetch]);
-
-  // Effect 3: Log selected ticket (creates circular dependency with Effect 4)
-  useEffect(() => {
-    if (selectedTicketId) {
-      console.log('Selected ticket:', selectedTicketId);
-      // This triggers Effect 4
-      setNotificationCount((prev) => prev + 1);
-    }
-  }, [selectedTicketId]);
-
-  // Effect 4: Update selection when notification count changes (circular!)
-  useEffect(() => {
-    if (notificationCount > 5 && !selectedTicketId) {
-      // Auto-select first ticket
-      if (tickets && tickets.length > 0) {
-        setSelectedTicketId(tickets[0].id);
-      }
-    }
-  }, [notificationCount, selectedTicketId, tickets]);
-
-  // Effect 5: Show success message after refetch (should use React Query callback)
-  useEffect(() => {
-    if (tickets && tickets.length > 0) {
-      console.log('Tickets loaded successfully!');
-    }
-  }, [tickets]);
+  // Derived state instead of useEffect + useState
+  // This is recalculated on every render when tickets change
+  const notificationCount = tickets?.filter((t) => !t.read).length ?? 0;
 
   if (isLoading) {
     return <div>Loading tickets...</div>;

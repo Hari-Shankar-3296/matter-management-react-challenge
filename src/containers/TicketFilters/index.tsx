@@ -1,28 +1,24 @@
-// NOTE: Redux is intentionally NOT installed to force candidates to remove it
-// import { useSelector, useDispatch } from 'react-redux';
-// import { setFilter } from './slice';
+import { useState } from 'react';
 
 /**
- * TASK 5: Remove Redux usage
+ * TASK 5: Fixed - Removed Redux usage
  * 
- * This component uses Redux for local component state that should be:
+ * This component now uses:
  * - React useState for local state
- * - React Query for server state
- * - URL params for shareable state (bonus)
+ * - React Query for server state (via parent component)
+ * 
+ * Redux was overkill for this simple filter state.
  */
-const TicketFilters = () => {
-  // TODO: Remove Redux usage - Redux is not installed TODO:
-  // Replace with React useState or URL params
-  // @ts-ignore - Redux not installed
-  const dispatch = null; // useDispatch();
-  // @ts-ignore - Redux store type
-  const filter = 'all'; // useSelector((state: any) => state.ticketFilters.filter);
-  // @ts-ignore
-  const sortBy = 'date'; // useSelector((state: any) => state.ticketFilters.sortBy);
+const TicketFiltersContainer = () => {
+  const [filter, setFilter] = useState<string>('all');
+  const [sortBy, setSortBy] = useState<string>('date');
 
   const handleFilterChange = (newFilter: string) => {
-    // dispatch(setFilter({ filter: newFilter }));
-    console.log('Filter change:', newFilter);
+    setFilter(newFilter);
+  };
+
+  const handleSortChange = (newSort: string) => {
+    setSortBy(newSort);
   };
 
   return (
@@ -34,7 +30,16 @@ const TicketFilters = () => {
           <select value={filter} onChange={(e) => handleFilterChange(e.target.value)}>
             <option value="all">All</option>
             <option value="open">Open</option>
+            <option value="in-progress">In Progress</option>
             <option value="closed">Closed</option>
+          </select>
+        </label>
+        <label style={{ marginLeft: '16px' }}>
+          Sort by:
+          <select value={sortBy} onChange={(e) => handleSortChange(e.target.value)}>
+            <option value="date">Date</option>
+            <option value="title">Title</option>
+            <option value="priority">Priority</option>
           </select>
         </label>
         <p>Current filter: {filter}</p>
@@ -44,4 +49,4 @@ const TicketFilters = () => {
   );
 };
 
-export default TicketFilters;
+export default TicketFiltersContainer;
