@@ -248,9 +248,9 @@ src/
 
 ## What if I had more time
 
-1. **Would have setup github actions for CI/CD**: I would have setup github actions for CI/CD to automate the testing and deployment process
+1. **Would have setup github actions for CI/CD**: I would have setup github actions for CI/CD to automate the testing and deployment process - DONE with basic setup - Check in repo
 2. **Would have added more unit tests**: I would have added more unit tests for the components and hooks
-3. **Would have added git-hooks**: I would have added git-hooks to ensure the code quality and prevent the commit of low quality code. (e.g. linting, prettier, etc.)
+3. **Would have added git-hooks**: I would have added git-hooks to ensure the code quality and prevent the commit of low quality code. (e.g. linting, prettier, etc.) - DONE with basic setup - Check in repo
 4. **Would have added more features**: I would have added more features to the application based on the requirements
 
 
