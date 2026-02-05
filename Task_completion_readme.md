@@ -77,17 +77,26 @@ Chose Recharts because:
 
 ---
 
-## 5. My Tickets Page
+## 5. Kanban Board
+
+### Features
+- **Board**: Shows Matters in columns (Backlog, To Do, In Progress, Testing, Done)
+- **Due badges**: Inline red badges for due this week / overdue
+- **Add/Edit/Delete**: Actions in table with confirmation modal
+
+---
+
+## 6. My Tickets Page
 
 ### Features
 - **Tabs**: "Assigned to Me" and "Reported by Me"
 - **Table view**: Shows ID, Title, Status, Priority, Reporter/Assignee, Due Date
 - **Due badges**: Inline red badges for due this week / overdue
-- **Edit/Delete**: Actions in table
+- **Add/Edit/Delete**: Actions in table with confirmation modal
 
 ---
 
-## 6. Code Quality Fixes
+## 7. Code Quality Fixes
 
 ### TASK 1: Removed Unnecessary useMemo/useCallback (UserProfile)
 **Before**: 5 useMemo and 2 useCallback for simple string operations
@@ -127,7 +136,7 @@ export const ticketKeys = {
 
 ---
 
-## 7. File Organization
+## 8. File Organization
 
 ### CSS
 All styles in `src/index.css` with CSS variables for theming. Components use class names that reference these styles.
@@ -135,6 +144,7 @@ All styles in `src/index.css` with CSS variables for theming. Components use cla
 ### Folder Structure
 ```
 src/
+├── assets/         # Shared assets and css styles
 ├── components/     # Shared UI components
 ├── containers/     # Legacy container components (fixed)
 ├── contexts/       # React contexts (Theme, Auth)
@@ -142,12 +152,14 @@ src/
 ├── pages/          # Route-level components
 ├── services/       # API functions
 ├── utils/          # Utility functions
+├── constants.ts    # TypeScript constants
 └── types.ts        # TypeScript types
+and more
 ```
 
 ---
 
-## 8. Production Readiness
+## 9. Production Readiness
 
 ### Implemented
 - Error boundaries (via React Query)
@@ -156,19 +168,28 @@ src/
 - Optimized React Query settings (staleTime, retry)
 - Responsive design
 
-### Recommendations for Production
+### Approach I would consider for Production readiness
 - Replace mock API with real backend
 - Add proper authentication (OAuth/JWT)
-- Add comprehensive error handling
-- Add unit/integration tests
+- Add comprehensive error handling and validations
+- Add pagination and virtualisation techniques to make UI performant
+- Add proper caching and offline support
+- Add unit/integration tests and automation tests with snapshots
 - Implement proper logging
 - Add analytics
+- Add proper monitoring
+- Add proper security measures
+- Add proper accessibility measures
+- Add proper performance measures
+- Add proper scalability measures
+- Add proper maintainability measures
+- Better documentation
 
 ---
 
 ## Trade-offs Considered
 
-1. **CSS-in-JS vs CSS files**: Chose CSS files for better performance and easier theming
+1. **CSS-in-JS vs CSS files**: Chose CSS files for better performance and easier theming, will be simplifying for larger apps
 2. **Redux vs Context**: Chose Context for auth/theme since state is simple
 3. **Recharts vs Chart.js**: Chose Recharts for better React integration
 4. **Component CSS files vs single CSS**: Single file for demo simplicity; would split for larger apps

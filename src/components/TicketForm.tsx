@@ -29,8 +29,10 @@ const TicketForm = ({ ticket, onSubmit, onCancel, isLoading }: TicketFormProps) 
     const [priority, setPriority] = useState<TicketPriority>('medium');
     const [assigneeId, setAssigneeId] = useState('');
     const [dueDate, setDueDate] = useState('');
+    const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
     useEffect(() => {
+        setErrors({}); // Clear errors when ticket changes
         if (ticket) {
             setTitle(ticket.title);
             setDescription(ticket.description || '');
@@ -48,9 +50,41 @@ const TicketForm = ({ ticket, onSubmit, onCancel, isLoading }: TicketFormProps) 
         }
     }, [ticket]);
 
+    const validate = () => {
+        const newErrors: { [key: string]: string } = {};
+
+        if (!title.trim()) {
+            newErrors.title = 'Title is required';
+        } else if (title.trim().length < 3) {
+            newErrors.title = `Title must be at least 3 characters`;
+        }
+
+        if (description.length > 500) {
+            newErrors.description = `Description must be less than 500 characters (${description.length}/500)`;
+        }
+
+        if (dueDate) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const selectedDate = new Date(dueDate);
+            // Only validate past dates for new tickets, as existing ones might historically keep their date
+            // or we might want to allow editing past tickets without forcing a date change.
+            // But for testing demo app I have added this validation
+            // Plan: "cannot be earlier than 'today' for *new* tickets"
+            if (!ticket && selectedDate < today) {
+                newErrors.dueDate = 'Due date cannot be in the past for new items';
+            }
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (!title.trim()) return;
+
+        if (!validate()) return;
+
         onSubmit({
             title: title.trim(),
             description: description.trim(),
@@ -102,11 +136,16 @@ const TicketForm = ({ ticket, onSubmit, onCancel, isLoading }: TicketFormProps) 
                     id="title"
                     type="text"
                     value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    onChange={(e) => {
+                        setTitle(e.target.value);
+                        if (errors.title) setErrors({ ...errors, title: '' });
+                    }}
                     placeholder={`Enter ${TERMINOLOGY.item} title`}
-                    required
                     autoFocus
+                    className={errors.title ? 'input-error' : ''}
+                    style={errors.title ? { borderColor: 'var(--danger)' } : {}}
                 />
+                {errors.title && <span className="error-message" style={{ color: 'var(--danger)', fontSize: '0.85rem', marginTop: '4px' }}>{errors.title}</span>}
             </div>
 
             <div className="form-group">
@@ -114,10 +153,18 @@ const TicketForm = ({ ticket, onSubmit, onCancel, isLoading }: TicketFormProps) 
                 <textarea
                     id="description"
                     value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    onChange={(e) => {
+                        setDescription(e.target.value);
+                        if (errors.description) setErrors({ ...errors, description: '' });
+                    }}
                     placeholder={`Enter ${TERMINOLOGY.item} description`}
                     rows={4}
+                    style={errors.description ? { borderColor: 'var(--danger)' } : {}}
                 />
+                {errors.description && <span className="error-message" style={{ color: 'var(--danger)', fontSize: '0.85rem', marginTop: '4px' }}>{errors.description}</span>}
+                <div style={{ textAlign: 'right', fontSize: '0.75rem', color: description.length > 500 ? 'var(--danger)' : 'var(--text-muted)' }}>
+                    {description.length}/500
+                </div>
             </div>
 
             <div className="form-row">
@@ -170,8 +217,13 @@ const TicketForm = ({ ticket, onSubmit, onCancel, isLoading }: TicketFormProps) 
                         id="dueDate"
                         type="date"
                         value={dueDate}
-                        onChange={(e) => setDueDate(e.target.value)}
+                        onChange={(e) => {
+                            setDueDate(e.target.value);
+                            if (errors.dueDate) setErrors({ ...errors, dueDate: '' });
+                        }}
+                        style={errors.dueDate ? { borderColor: 'var(--danger)' } : {}}
                     />
+                    {errors.dueDate && <span className="error-message" style={{ color: 'var(--danger)', fontSize: '0.85rem', marginTop: '4px' }}>{errors.dueDate}</span>}
                 </div>
             </div>
 
@@ -182,7 +234,7 @@ const TicketForm = ({ ticket, onSubmit, onCancel, isLoading }: TicketFormProps) 
                 <button
                     type="submit"
                     className="btn btn-primary"
-                    disabled={isLoading || !title.trim()}
+                    disabled={isLoading}
                 >
                     {isLoading ? 'Saving...' : ticket ? `Update ${TERMINOLOGY.ITEM}` : `Create ${TERMINOLOGY.ITEM}`}
                 </button>

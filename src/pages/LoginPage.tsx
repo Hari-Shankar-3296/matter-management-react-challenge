@@ -13,7 +13,7 @@ const LoginPage = () => {
         setError('');
 
         if (!selectedEmail) {
-            setError('Please select a user');
+            setError('Please select a user to continue.');
             return;
         }
 
@@ -42,8 +42,12 @@ const LoginPage = () => {
                         <select
                             id="user-select"
                             value={selectedEmail}
-                            onChange={(e) => setSelectedEmail(e.target.value)}
+                            onChange={(e) => {
+                                setSelectedEmail(e.target.value);
+                                if (error) setError('');
+                            }}
                             disabled={isLoading}
+                            style={error ? { borderColor: 'var(--danger)' } : {}}
                         >
                             <option value="">-- Select a user --</option>
                             {users.map((user) => (
@@ -57,7 +61,7 @@ const LoginPage = () => {
                     <button
                         type="submit"
                         className="btn btn-primary btn-lg"
-                        disabled={isLoading || !selectedEmail}
+                        disabled={isLoading}
                     >
                         {isLoading ? 'Signing in...' : 'Sign In'}
                     </button>
