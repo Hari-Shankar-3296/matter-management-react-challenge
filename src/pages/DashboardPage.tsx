@@ -1,18 +1,9 @@
 import { useAuth } from '../contexts/AuthContext';
 import { useTicketStats, useMyTickets } from '../hooks/useTickets';
-import { Link } from 'react-router-dom';
-import {
-    PieChart,
-    Pie,
-    Cell,
-    BarChart,
-    Bar,
-    XAxis,
-    YAxis,
-    Tooltip,
-    ResponsiveContainer,
-} from 'recharts';
 import { TERMINOLOGY } from '../constants';
+import StatCard from '../components/StatCard';
+import DashboardChart from '../components/DashboardChart';
+import TicketListMini from '../components/TicketListMini';
 
 const DashboardPage = () => {
     const { user } = useAuth();
@@ -45,90 +36,32 @@ const DashboardPage = () => {
 
             {/* Stats Cards */}
             <div className="stats-grid">
-                <div className="stat-card">
-                    <div className="stat-value">{myTickets?.assigned.length || 0}</div>
-                    <div className="stat-label">Assigned to Me</div>
-                </div>
-                <div className="stat-card">
-                    <div className="stat-value">{myTickets?.reported.length || 0}</div>
-                    <div className="stat-label">Reported by Me</div>
-                </div>
-                <div className="stat-card">
-                    <div className="stat-value">{stats?.total || 0}</div>
-                    <div className="stat-label">Total {TERMINOLOGY.ITEMS}</div>
-                </div>
-                <div className="stat-card">
-                    <div className="stat-value">{stats?.open || 0}</div>
-                    <div className="stat-label">Open {TERMINOLOGY.ITEMS}</div>
-                </div>
+                <StatCard label="Assigned to Me" value={myTickets?.assigned.length || 0} />
+                <StatCard label="Reported by Me" value={myTickets?.reported.length || 0} />
+                <StatCard label={`Total ${TERMINOLOGY.ITEMS}`} value={stats?.total || 0} />
+                <StatCard label={`Open ${TERMINOLOGY.ITEMS}`} value={stats?.open || 0} />
             </div>
 
             {/* Charts */}
             <div className="charts-grid">
-                <div className="chart-card">
-                    <h3>{TERMINOLOGY.ITEMS} by Status</h3>
-                    <ResponsiveContainer width="100%" height={250}>
-                        <PieChart>
-                            <Pie
-                                data={statusData}
-                                cx="50%"
-                                cy="50%"
-                                innerRadius={60}
-                                outerRadius={80}
-                                dataKey="value"
-                                label={({ name, value }) => `${name}: ${value}`}
-                            >
-                                {statusData.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={entry.color} />
-                                ))}
-                            </Pie>
-                            <Tooltip />
-                        </PieChart>
-                    </ResponsiveContainer>
-                </div>
-
-                <div className="chart-card">
-                    <h3>{TERMINOLOGY.ITEMS} by Priority</h3>
-                    <ResponsiveContainer width="100%" height={250}>
-                        <BarChart data={priorityData}>
-                            <XAxis dataKey="name" />
-                            <YAxis allowDecimals={false} />
-                            <Tooltip />
-                            <Bar dataKey="value">
-                                {priorityData.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={entry.color} />
-                                ))}
-                            </Bar>
-                        </BarChart>
-                    </ResponsiveContainer>
-                </div>
+                <DashboardChart
+                    title={`${TERMINOLOGY.ITEMS} by Status`}
+                    data={statusData}
+                    type="pie"
+                />
+                <DashboardChart
+                    title={`${TERMINOLOGY.ITEMS} by Priority`}
+                    data={priorityData}
+                    type="bar"
+                />
             </div>
 
             {/* Recent Tickets */}
-            <div className="dashboard-section">
-                <div className="section-header">
-                    <h3>My Assigned {TERMINOLOGY.ITEMS}</h3>
-                    <Link to={TERMINOLOGY.ROUTES.MY_TICKETS} className="link">
-                        View All →
-                    </Link>
-                </div>
-                <div className="ticket-list-mini">
-                    {myTickets?.assigned.slice(0, 5).map((ticket) => (
-                        <div key={ticket.id} className="ticket-item-mini">
-                            <div className="ticket-info">
-                                <span className="ticket-id">#{ticket.id}</span>
-                                <span className="ticket-title">{ticket.title}</span>
-                            </div>
-                            <span className={`priority-badge priority-${ticket.priority}`}>
-                                {ticket.priority}
-                            </span>
-                        </div>
-                    ))}
-                    {(!myTickets?.assigned || myTickets.assigned.length === 0) && (
-                        <div className="empty-mini">No {TERMINOLOGY.items.toLowerCase()} assigned to you</div>
-                    )}
-                </div>
-            </div>
+            <TicketListMini
+                tickets={myTickets?.assigned}
+                title={`My Assigned ${TERMINOLOGY.ITEMS}`}
+                viewAllLink={TERMINOLOGY.ROUTES.MY_TICKETS}
+            />
         </div>
     );
 };

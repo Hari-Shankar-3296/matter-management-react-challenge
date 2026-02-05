@@ -1,34 +1,76 @@
-import { TicketStatus } from '../types';
+import { Ticket } from '../types';
+import { formatDate, isDueThisWeek, isOverdue } from '../utils/dateUtils';
+import AssigneeSelector from './AssigneeSelector';
+import Badge from './Badge';
 
 interface TicketCardProps {
-  ticket: {
-    id: string;
-    title: string;
-    status: TicketStatus | 'open' | 'closed';
-    read?: boolean;
-  };
+  ticket: Ticket;
   isSelected: boolean;
-  onClick: () => void;
+  onSelect: (ticket: Ticket) => void;
+  onEdit: (ticket: Ticket) => void;
+  onDelete: (id: string) => void;
 }
 
-const TicketCard = ({ ticket, isSelected, onClick }: TicketCardProps) => {
+const TicketCard = ({ ticket, isSelected, onSelect, onEdit, onDelete }: TicketCardProps) => {
+  const dueThisWeek = isDueThisWeek(ticket.dueDate);
+  const overdue = isOverdue(ticket.dueDate);
+
   return (
     <div
-      onClick={onClick}
-      style={{
-        padding: '12px 16px',
-        margin: '8px 0',
-        border: `2px solid ${isSelected ? 'var(--primary-500)' : 'var(--border-color)'}`,
-        borderRadius: '8px',
-        cursor: 'pointer',
-        background: isSelected ? 'var(--bg-hover)' : 'var(--bg-card)',
-        transition: 'all 0.15s ease',
-      }}
+      className={`ticket-card ${isSelected ? 'selected' : ''}`}
+      onClick={() => onSelect(ticket)}
     >
-      <h4 style={{ margin: 0, marginBottom: '4px', fontSize: '0.95rem' }}>{ticket.title}</h4>
-      <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
-        Status: <span style={{ textTransform: 'capitalize' }}>{ticket.status}</span>
-      </p>
+      <div className="ticket-card-header">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: 1, minWidth: 0 }}>
+          <span className="ticket-card-title" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            {ticket.title}
+          </span>
+          {dueThisWeek && !overdue && (
+            <Badge type="due" value="Due this week" />
+          )}
+          {overdue && (
+            <Badge type="due" value="Overdue" />
+          )}
+        </div>
+        <div className="ticket-card-actions">
+          <button
+            className="action-btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              onEdit(ticket);
+            }}
+          >
+            ✏️
+          </button>
+          <button
+            className="action-btn delete"
+            onClick={(e) => {
+              e.stopPropagation();
+              onDelete(ticket.id);
+            }}
+          >
+            🗑️
+          </button>
+        </div>
+      </div>
+      <div className="ticket-card-meta">
+        <div style={{ display: 'flex', gap: '8px', alignItems: 'center', position: 'relative' }}>
+          <Badge type="status" value={ticket.status} />
+          <Badge type="priority" value={ticket.priority} />
+          <span className="ticket-card-date">
+            {formatDate(ticket.createdAt)}
+          </span>
+          <div style={{ position: 'absolute', right: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <p className='ticket-card-date'>Assigned to </p>
+            <div onClick={(e) => e.stopPropagation()}>
+              <AssigneeSelector
+                ticketId={ticket.id}
+                currentAssigneeId={ticket.assigneeId}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

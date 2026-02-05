@@ -7,9 +7,9 @@ import TicketFiltersComponent from '../components/TicketFiltersComponent';
 import Modal from '../components/Modal';
 import ConfirmationModal from '../components/ConfirmationModal';
 import TicketForm from '../components/TicketForm';
-import { formatDate, isDueThisWeek, isOverdue } from '../utils/dateUtils';
 import { TERMINOLOGY } from '../constants';
-import AssigneeSelector from '../components/AssigneeSelector';
+import TicketList from '../components/TicketList';
+import TicketDetail from '../components/TicketDetail';
 
 const TicketsPage = () => {
     const [searchParams] = useSearchParams();
@@ -130,151 +130,17 @@ const TicketsPage = () => {
                     initialFilters={filters}
                 />
 
-                <div className="ticket-list" style={{ maxHeight: '65vh', overflowY: 'auto' }}>
-                    {tickets?.map((ticket) => {
-                        const dueThisWeek = isDueThisWeek(ticket.dueDate);
-                        const overdue = isOverdue(ticket.dueDate);
-
-                        return (
-                            <div
-                                key={ticket.id}
-                                className={`ticket-card ${selectedTicketId === ticket.id ? 'selected' : ''}`}
-                                onClick={() => setSelectedTicketId(ticket.id)}
-                            >
-                                <div className="ticket-card-header">
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: 1, minWidth: 0 }}>
-                                        <span className="ticket-card-title" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                                            {ticket.title}
-                                        </span>
-                                        {dueThisWeek && !overdue && (
-                                            <span className="due-badge due-this-week" style={{ flexShrink: 0 }}>Due this week</span>
-                                        )}
-                                        {overdue && (
-                                            <span className="due-badge overdue" style={{ flexShrink: 0 }}>Overdue</span>
-                                        )}
-                                    </div>
-                                    <div className="ticket-card-actions">
-                                        <button
-                                            className="action-btn"
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                handleEdit(ticket);
-                                            }}
-                                        >
-                                            ✏️
-                                        </button>
-                                        <button
-                                            className="action-btn delete"
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                confirmDelete(ticket.id);
-                                            }}
-                                        >
-                                            🗑️
-                                        </button>
-                                    </div>
-                                </div>
-                                <div className="ticket-card-meta">
-                                    <div style={{ display: 'flex', gap: '8px', alignItems: 'center', position: 'relative' }}>
-                                        <span className={`status-badge badge-${ticket.status}`}>
-                                            {ticket.status}
-                                        </span>
-                                        <span className={`priority-badge priority-${ticket.priority}`}>
-                                            {ticket.priority}
-                                        </span>
-                                        <span className="ticket-card-date">
-                                            {formatDate(ticket.createdAt)}
-                                        </span>
-                                        <div style={{ position: 'absolute', right: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                            <p className='ticket-card-date'>Assigned to </p>
-                                            <div onClick={(e) => e.stopPropagation()}>
-                                                <AssigneeSelector
-                                                    ticketId={ticket.id}
-                                                    currentAssigneeId={ticket.assigneeId}
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        );
-                    })}
-                    {(!tickets || tickets.length === 0) && (
-                        <div className="empty-state">No {TERMINOLOGY.items} found</div>
-                    )}
-                </div>
+                <TicketList
+                    tickets={tickets || []}
+                    selectedId={selectedTicketId}
+                    onSelect={(ticket) => setSelectedTicketId(ticket.id)}
+                    onEdit={handleEdit}
+                    onDelete={confirmDelete}
+                />
             </div>
 
             <div className="ticket-detail-section">
-                {selectedTicket ? (
-                    <div className="ticket-detail">
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                            <h2>{selectedTicket.title}</h2>
-                            <div onClick={(e) => e.stopPropagation()}>
-                                <AssigneeSelector
-                                    ticketId={selectedTicket.id}
-                                    currentAssigneeId={selectedTicket.assigneeId}
-                                />
-                            </div>
-                        </div>
-
-                        <div className="ticket-meta">
-                            <div className="ticket-meta-item">
-                                <span className="ticket-meta-label">ID</span>
-                                <span>#{selectedTicket.id}</span>
-                            </div>
-                            <div className="ticket-meta-item">
-                                <span className="ticket-meta-label">Status</span>
-                                <span className={`status-badge badge-${selectedTicket.status}`}>
-                                    {selectedTicket.status}
-                                </span>
-                            </div>
-                            <div className="ticket-meta-item">
-                                <span className="ticket-meta-label">Priority</span>
-                                <span className={`priority-badge priority-${selectedTicket.priority}`}>
-                                    {selectedTicket.priority}
-                                </span>
-                            </div>
-                            <div className="ticket-meta-item">
-                                <span className="ticket-meta-label">Reporter</span>
-                                <span>{getUserName(selectedTicket.reporterId)}</span>
-                            </div>
-                            <div className="ticket-meta-item">
-                                <span className="ticket-meta-label">Assignee</span>
-                                <AssigneeSelector
-                                    ticketId={selectedTicket.id}
-                                    currentAssigneeId={selectedTicket.assigneeId}
-                                />
-                            </div>
-                            <div className="ticket-meta-item">
-                                <span className="ticket-meta-label">Created</span>
-                                <span>{formatDate(selectedTicket.createdAt)}</span>
-                            </div>
-                            {selectedTicket.dueDate && (
-                                <div className="ticket-meta-item">
-                                    <span className="ticket-meta-label">Due Date</span>
-                                    <span>
-                                        {formatDate(selectedTicket.dueDate)}
-                                        {isDueThisWeek(selectedTicket.dueDate) && !isOverdue(selectedTicket.dueDate) && (
-                                            <span className="due-badge due-this-week">Due this week</span>
-                                        )}
-                                        {isOverdue(selectedTicket.dueDate) && (
-                                            <span className="due-badge overdue">Overdue</span>
-                                        )}
-                                    </span>
-                                </div>
-                            )}
-                        </div>
-                        <div className="ticket-description">
-                            <h3>Description</h3>
-                            <p>{selectedTicket.description || 'No description provided.'}</p>
-                        </div>
-                    </div>
-                ) : (
-                    <div className="ticket-detail-empty">
-                        Select a {TERMINOLOGY.item} to view details
-                    </div>
-                )}
+                <TicketDetail ticket={selectedTicket} getUserName={getUserName} />
             </div>
 
             <Modal

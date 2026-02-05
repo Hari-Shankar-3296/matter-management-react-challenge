@@ -1,13 +1,9 @@
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useUsers } from '../hooks/useUsers';
+import ProfileSection from '../components/ProfileSection';
+import TeamMemberItem from '../components/TeamMemberItem';
 
-/**
- * User Profile Page
- * 
- * Note: Unnecessary useMemo/useCallback from TASK 1 have been removed.
- * Simple string operations and event handlers don't need memoization.
- */
 const UserProfilePage = () => {
     const { user, logout } = useAuth();
     const { data: users } = useUsers();
@@ -17,7 +13,6 @@ const UserProfilePage = () => {
         return <div className="loading">Loading profile...</div>;
     }
 
-    // Simple derived values - no useMemo needed for basic string operations
     const displayName = `${user.firstName} ${user.lastName}`;
     const initials = `${user.firstName[0]}${user.lastName[0]}`.toUpperCase();
 
@@ -40,8 +35,7 @@ const UserProfilePage = () => {
                     </div>
                 </div>
 
-                <div className="profile-section">
-                    <h3>Account Details</h3>
+                <ProfileSection title="Account Details">
                     <div className="profile-details">
                         <div className="detail-row">
                             <span className="detail-label">User ID</span>
@@ -60,24 +54,15 @@ const UserProfilePage = () => {
                             <span className="detail-value">{user.email}</span>
                         </div>
                     </div>
-                </div>
+                </ProfileSection>
 
-                <div className="profile-section">
-                    <h3>Team Members</h3>
+                <ProfileSection title="Team Members">
                     <div className="team-list">
                         {users?.filter(u => u.id !== user.id).map((member) => (
-                            <div key={member.id} className="team-member">
-                                <div className="member-avatar">
-                                    {member.firstName[0]}{member.lastName[0]}
-                                </div>
-                                <div className="member-info">
-                                    <span className="member-name">{member.firstName} {member.lastName}</span>
-                                    <span className="member-email">{member.email}</span>
-                                </div>
-                            </div>
+                            <TeamMemberItem key={member.id} member={member} />
                         ))}
                     </div>
-                </div>
+                </ProfileSection>
 
                 <div className="profile-actions">
                     {showConfirm ? (

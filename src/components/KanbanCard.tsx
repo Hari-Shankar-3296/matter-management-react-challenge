@@ -1,6 +1,7 @@
 import { Ticket } from '../types';
 import { isDueThisWeek, isOverdue, formatDate } from '../utils/dateUtils';
 import AssigneeSelector from './AssigneeSelector';
+import Badge from './Badge';
 
 interface KanbanCardProps {
     ticket: Ticket;
@@ -60,15 +61,13 @@ const KanbanCard = ({ ticket, onEdit, onDelete }: KanbanCardProps) => {
 
                 {/* Due this week badge next to title */}
                 {dueThisWeek && !overdue && (
-                    <span className="due-badge due-this-week" style={{ marginLeft: 0, fontSize: '0.65rem', whiteSpace: 'nowrap' }}>
-                        Due this week
-                    </span>
+                    <Badge type="due" value="Due this week" style={{ fontSize: '0.65rem' }} />
                 )}
             </div>
 
             {overdue && (
                 <div style={{ marginBottom: '8px' }}>
-                    <span className="due-badge overdue" style={{ marginLeft: 0 }}>Overdue</span>
+                    <Badge type="due" value="Overdue" />
                 </div>
             )}
 
@@ -78,9 +77,7 @@ const KanbanCard = ({ ticket, onEdit, onDelete }: KanbanCardProps) => {
 
             <div className="kanban-card-meta">
                 <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                    <span className={`priority-badge priority-${ticket.priority}`}>
-                        {ticket.priority}
-                    </span>
+                    <Badge type="priority" value={ticket.priority} />
                     {ticket.dueDate && (
                         <span className="kanban-card-date">{formatDate(ticket.dueDate)}</span>
                     )}

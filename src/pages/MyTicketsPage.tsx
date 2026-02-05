@@ -5,9 +5,8 @@ import { Ticket, TicketStatus, TicketPriority } from '../types';
 import Modal from '../components/Modal';
 import ConfirmationModal from '../components/ConfirmationModal';
 import TicketForm from '../components/TicketForm';
-import { formatDate, isDueThisWeek, isOverdue } from '../utils/dateUtils';
 import { TERMINOLOGY } from '../constants';
-import AssigneeSelector from '../components/AssigneeSelector';
+import TicketTable from '../components/TicketTable';
 
 const MyTicketsPage = () => {
     useAuth(); // Used for auth check
@@ -22,8 +21,6 @@ const MyTicketsPage = () => {
     const [editingTicket, setEditingTicket] = useState<Ticket | null>(null);
     const [isUpdateConfirmOpen, setIsUpdateConfirmOpen] = useState(false);
     const [pendingUpdateData, setPendingUpdateData] = useState<any>(null);
-
-
 
     const handleEdit = (ticket: Ticket) => {
         setEditingTicket(ticket);
@@ -104,76 +101,12 @@ const MyTicketsPage = () => {
                 </button>
             </div>
 
-            <div className="tickets-table-container">
-                {tickets && tickets.length > 0 ? (
-                    <table className="tickets-table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Title</th>
-                                <th>Status</th>
-                                <th>Priority</th>
-                                <th>{activeTab === 'assigned' ? 'Reporter' : 'Assignee'}</th>
-                                <th>Due Date</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {tickets.map((ticket) => (
-                                <tr key={ticket.id}>
-                                    <td className="ticket-id-cell">#{ticket.id}</td>
-                                    <td className="ticket-title-cell">
-                                        {ticket.title}
-                                        {isDueThisWeek(ticket.dueDate) && !isOverdue(ticket.dueDate) && (
-                                            <span className="due-badge due-this-week">Due this week</span>
-                                        )}
-                                        {isOverdue(ticket.dueDate) && (
-                                            <span className="due-badge overdue">Overdue</span>
-                                        )}
-                                    </td>
-                                    <td>
-                                        <span className={`status-badge badge-${ticket.status}`}>
-                                            {ticket.status}
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <span className={`priority-badge priority-${ticket.priority}`}>
-                                            {ticket.priority}
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <div onClick={(e) => e.stopPropagation()}>
-                                            <AssigneeSelector
-                                                ticketId={ticket.id}
-                                                currentAssigneeId={activeTab === 'assigned' ? ticket.reporterId : ticket.assigneeId}
-                                                readonly={activeTab === 'assigned'}
-                                            />
-                                        </div>
-                                    </td>
-                                    <td>{ticket.dueDate ? formatDate(ticket.dueDate) : '-'}</td>
-                                    <td>
-                                        <div className="table-actions">
-                                            <button className="action-btn" onClick={() => handleEdit(ticket)}>
-                                                ✏️
-                                            </button>
-                                            <button
-                                                className="action-btn delete"
-                                                onClick={() => confirmDelete(ticket.id)}
-                                            >
-                                                🗑️
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                ) : (
-                    <div className="empty-state">
-                        <p>No {TERMINOLOGY.items} found</p>
-                    </div>
-                )}
-            </div>
+            <TicketTable
+                tickets={tickets}
+                activeTab={activeTab}
+                onEdit={handleEdit}
+                onDelete={confirmDelete}
+            />
 
             <Modal
                 isOpen={isModalOpen}
