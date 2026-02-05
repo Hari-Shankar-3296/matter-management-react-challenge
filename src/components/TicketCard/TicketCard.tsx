@@ -16,21 +16,17 @@ const TicketCard = ({ ticket, isSelected, onSelect, onEdit, onDelete }: TicketCa
   const overdue = isOverdue(ticket.dueDate);
 
   return (
-    <div
-      className={`ticket-card ${isSelected ? 'selected' : ''}`}
-      onClick={() => onSelect(ticket)}
-    >
+    <div className={`ticket-card ${isSelected ? 'selected' : ''}`} onClick={() => onSelect(ticket)}>
       <div className="ticket-card-header">
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: 1, minWidth: 0 }}>
-          <span className="ticket-card-title" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+          <span
+            className="ticket-card-title"
+            style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}
+          >
             {ticket.title}
           </span>
-          {dueThisWeek && !overdue && (
-            <Badge type="due" value="Due this week" />
-          )}
-          {overdue && (
-            <Badge type="due" value="Overdue" />
-          )}
+          {dueThisWeek && !overdue && <Badge type="due" value="Due this week" />}
+          {overdue && <Badge type="due" value="Overdue" />}
         </div>
         <div className="ticket-card-actions">
           <button
@@ -57,16 +53,19 @@ const TicketCard = ({ ticket, isSelected, onSelect, onEdit, onDelete }: TicketCa
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center', position: 'relative' }}>
           <Badge type="status" value={ticket.status} />
           <Badge type="priority" value={ticket.priority} />
-          <span className="ticket-card-date">
-            {formatDate(ticket.createdAt)}
-          </span>
-          <div style={{ position: 'absolute', right: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <p className='ticket-card-date'>Assigned to </p>
+          <span className="ticket-card-date">{formatDate(ticket.createdAt)}</span>
+          <div
+            style={{
+              position: 'absolute',
+              right: '8px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+            }}
+          >
+            <p className="ticket-card-date">Assigned to </p>
             <div onClick={(e) => e.stopPropagation()}>
-              <AssigneeSelector
-                ticketId={ticket.id}
-                currentAssigneeId={ticket.assigneeId}
-              />
+              <AssigneeSelector ticketId={ticket.id} currentAssigneeId={ticket.assigneeId} />
             </div>
           </div>
         </div>

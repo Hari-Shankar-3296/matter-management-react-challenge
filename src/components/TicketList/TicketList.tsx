@@ -12,9 +12,7 @@ interface TicketListProps {
 
 const TicketList = ({ tickets, selectedId, onSelect, onEdit, onDelete }: TicketListProps) => {
   if (!tickets || tickets.length === 0) {
-    return (
-      <div className="empty-state">No {TERMINOLOGY.items} found</div>
-    );
+    return <div className="empty-state">No {TERMINOLOGY.items} found</div>;
   }
 
   return (

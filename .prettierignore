@@ -1,0 +1,6 @@
+# Ignore artifacts and build outputs
+dist
+node_modules
+coverage
+.gemini
+*.md

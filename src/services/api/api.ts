@@ -1,6 +1,12 @@
 // Mock API with in-memory store for CRUD operations
 
-import { Ticket, CreateTicketInput, UpdateTicketInput, TicketFilters, TicketPriority } from '@/types';
+import {
+  Ticket,
+  CreateTicketInput,
+  UpdateTicketInput,
+  TicketFilters,
+  TicketPriority,
+} from '@/types';
 
 // Helper to get current user ID from localStorage
 const getCurrentUserId = (): string => {
@@ -24,7 +30,8 @@ const mockTickets: Ticket[] = [
     status: 'open',
     priority: 'high',
     createdAt: '2024-01-15T10:00:00Z',
-    description: 'Users cannot log in with their credentials. This is a critical issue affecting multiple users.',
+    description:
+      'Users cannot log in with their credentials. This is a critical issue affecting multiple users.',
     reporterId: 'user-1',
     assigneeId: 'user-2',
     dueDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString(), // 2 days from now (this week)
@@ -35,7 +42,8 @@ const mockTickets: Ticket[] = [
     status: 'in-progress',
     priority: 'medium',
     createdAt: '2024-01-14T14:30:00Z',
-    description: 'Redesign the dashboard to match new brand guidelines. Include new color scheme and typography.',
+    description:
+      'Redesign the dashboard to match new brand guidelines. Include new color scheme and typography.',
     reporterId: 'user-2',
     assigneeId: 'user-1',
     dueDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(), // 7 days from now
@@ -46,7 +54,8 @@ const mockTickets: Ticket[] = [
     status: 'closed',
     priority: 'low',
     createdAt: '2024-01-10T09:15:00Z',
-    description: 'Implement dark mode theme across the application. Ensure all components support both themes.',
+    description:
+      'Implement dark mode theme across the application. Ensure all components support both themes.',
     reporterId: 'user-1',
     assigneeId: 'user-3',
     dueDate: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toISOString(), // 15 days from now
@@ -57,7 +66,8 @@ const mockTickets: Ticket[] = [
     status: 'open',
     priority: 'critical',
     createdAt: '2024-01-12T11:20:00Z',
-    description: 'Improve performance of slow database queries. Add proper indexing and optimize joins.',
+    description:
+      'Improve performance of slow database queries. Add proper indexing and optimize joins.',
     reporterId: 'user-3',
     assigneeId: 'user-1',
     dueDate: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toISOString(), // Tomorrow (this week)
@@ -78,7 +88,7 @@ const mockTickets: Ticket[] = [
 let nextId = 6;
 
 // Simulate API delay
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const fetchTickets = async (params?: TicketFilters): Promise<Ticket[]> => {
   await delay(300);
@@ -87,22 +97,23 @@ export const fetchTickets = async (params?: TicketFilters): Promise<Ticket[]> =>
 
   if (params?.search) {
     const searchLower = params.search.toLowerCase();
-    filtered = filtered.filter(ticket =>
-      ticket.title.toLowerCase().includes(searchLower) ||
-      ticket.description?.toLowerCase().includes(searchLower)
+    filtered = filtered.filter(
+      (ticket) =>
+        ticket.title.toLowerCase().includes(searchLower) ||
+        ticket.description?.toLowerCase().includes(searchLower)
     );
   }
 
   if (params?.status && params.status !== 'all') {
-    filtered = filtered.filter(ticket => ticket.status === params.status);
+    filtered = filtered.filter((ticket) => ticket.status === params.status);
   }
 
   if (params?.priority && params.priority !== 'all') {
-    filtered = filtered.filter(ticket => ticket.priority === params.priority);
+    filtered = filtered.filter((ticket) => ticket.priority === params.priority);
   }
 
   if (params?.assigneeId) {
-    filtered = filtered.filter(ticket => ticket.assigneeId === params.assigneeId);
+    filtered = filtered.filter((ticket) => ticket.assigneeId === params.assigneeId);
   }
 
   if (params?.dueThisWeek) {
@@ -117,7 +128,7 @@ export const fetchTickets = async (params?: TicketFilters): Promise<Ticket[]> =>
     endOfWeek.setDate(startOfWeek.getDate() + 6);
     endOfWeek.setHours(23, 59, 59, 999);
 
-    filtered = filtered.filter(ticket => {
+    filtered = filtered.filter((ticket) => {
       if (!ticket.dueDate) return false;
       const dueDate = new Date(ticket.dueDate);
       return dueDate >= startOfWeek && dueDate <= endOfWeek;
@@ -126,9 +137,7 @@ export const fetchTickets = async (params?: TicketFilters): Promise<Ticket[]> =>
 
   // Sorting
   if (params?.sortBy === 'date') {
-    filtered.sort((a, b) =>
-      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    );
+    filtered.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   } else if (params?.sortBy === 'title') {
     filtered.sort((a, b) => a.title.localeCompare(b.title));
   } else if (params?.sortBy === 'priority') {
@@ -153,7 +162,7 @@ export const fetchTickets = async (params?: TicketFilters): Promise<Ticket[]> =>
 export const fetchTicketById = async (id: string): Promise<Ticket> => {
   await delay(200);
 
-  const ticket = mockTickets.find(t => t.id === id);
+  const ticket = mockTickets.find((t) => t.id === id);
   if (!ticket) {
     throw new Error('Ticket not found');
   }
@@ -182,7 +191,7 @@ export const createTicket = async (input: CreateTicketInput): Promise<Ticket> =>
 export const updateTicket = async (input: UpdateTicketInput): Promise<Ticket> => {
   await delay(300);
 
-  const index = mockTickets.findIndex(t => t.id === input.id);
+  const index = mockTickets.findIndex((t) => t.id === input.id);
   if (index === -1) {
     throw new Error('Ticket not found');
   }
@@ -205,7 +214,7 @@ export const updateTicket = async (input: UpdateTicketInput): Promise<Ticket> =>
 export const deleteTicket = async (id: string): Promise<void> => {
   await delay(200);
 
-  const index = mockTickets.findIndex(t => t.id === id);
+  const index = mockTickets.findIndex((t) => t.id === id);
   if (index === -1) {
     throw new Error('Ticket not found');
   }
@@ -219,8 +228,8 @@ export const fetchMyTickets = async (): Promise<{ assigned: Ticket[]; reported: 
   const userId = getCurrentUserId();
 
   return {
-    assigned: mockTickets.filter(t => t.assigneeId === userId),
-    reported: mockTickets.filter(t => t.reporterId === userId),
+    assigned: mockTickets.filter((t) => t.assigneeId === userId),
+    reported: mockTickets.filter((t) => t.reporterId === userId),
   };
 };
 
@@ -236,14 +245,14 @@ export const fetchTicketStats = async (): Promise<{
 
   return {
     total: mockTickets.length,
-    open: mockTickets.filter(t => t.status === 'open').length,
-    inProgress: mockTickets.filter(t => t.status === 'in-progress').length,
-    closed: mockTickets.filter(t => t.status === 'closed').length,
+    open: mockTickets.filter((t) => t.status === 'open').length,
+    inProgress: mockTickets.filter((t) => t.status === 'in-progress').length,
+    closed: mockTickets.filter((t) => t.status === 'closed').length,
     byPriority: {
-      critical: mockTickets.filter(t => t.priority === 'critical').length,
-      high: mockTickets.filter(t => t.priority === 'high').length,
-      medium: mockTickets.filter(t => t.priority === 'medium').length,
-      low: mockTickets.filter(t => t.priority === 'low').length,
+      critical: mockTickets.filter((t) => t.priority === 'critical').length,
+      high: mockTickets.filter((t) => t.priority === 'high').length,
+      medium: mockTickets.filter((t) => t.priority === 'medium').length,
+      low: mockTickets.filter((t) => t.priority === 'low').length,
     },
   };
 };

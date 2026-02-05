@@ -11,11 +11,7 @@ interface TicketDetailProps {
 
 const TicketDetail = ({ ticket, getUserName }: TicketDetailProps) => {
   if (!ticket) {
-    return (
-      <div className="ticket-detail-empty">
-        Select a {TERMINOLOGY.item} to view details
-      </div>
-    );
+    return <div className="ticket-detail-empty">Select a {TERMINOLOGY.item} to view details</div>;
   }
 
   return (
@@ -43,10 +39,7 @@ const TicketDetail = ({ ticket, getUserName }: TicketDetailProps) => {
         </div>
         <div className="ticket-meta-item">
           <span className="ticket-meta-label">Assignee</span>
-          <AssigneeSelector
-            ticketId={ticket.id}
-            currentAssigneeId={ticket.assigneeId}
-          />
+          <AssigneeSelector ticketId={ticket.id} currentAssigneeId={ticket.assigneeId} />
         </div>
         <div className="ticket-meta-item">
           <span className="ticket-meta-label">Created</span>
@@ -60,9 +53,7 @@ const TicketDetail = ({ ticket, getUserName }: TicketDetailProps) => {
               {isDueThisWeek(ticket.dueDate) && !isOverdue(ticket.dueDate) && (
                 <Badge type="due" value="Due this week" />
               )}
-              {isOverdue(ticket.dueDate) && (
-                <Badge type="due" value="Overdue" />
-              )}
+              {isOverdue(ticket.dueDate) && <Badge type="due" value="Overdue" />}
             </span>
           </div>
         )}
