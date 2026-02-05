@@ -1,0 +1,1 @@
+const t={all:["tickets"],lists:()=>[...t.all,"list"],list:l=>[...t.lists(),l],details:()=>[...t.all,"detail"],detail:l=>[...t.details(),l]},s={all:["users"],lists:()=>[...s.all,"list"],list:()=>[...s.lists()],details:()=>[...s.all,"detail"],detail:l=>[...s.details(),l],profile:()=>[...s.all,"profile"]};export{t,s as u};
