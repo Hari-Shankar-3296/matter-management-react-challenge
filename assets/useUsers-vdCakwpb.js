@@ -1,1 +1,0 @@
-import{u as e}from"./vendor-query-30WTYxUa.js";import{u as r}from"./queryKeys-D-dtdCA2.js";import{f as s}from"./index-qdssDWYQ.js";const m=()=>e({queryKey:r.list(),queryFn:s,staleTime:5*60*1e3});export{m as u};
