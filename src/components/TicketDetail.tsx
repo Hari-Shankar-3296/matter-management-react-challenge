@@ -6,7 +6,7 @@ import Badge from './Badge';
 
 interface TicketDetailProps {
   ticket: Ticket | null | undefined;
-  getUserName: (userId: string | undefined) => string;
+  getUserName: (userId: string) => string;
 }
 
 const TicketDetail = ({ ticket, getUserName }: TicketDetailProps) => {
@@ -22,12 +22,6 @@ const TicketDetail = ({ ticket, getUserName }: TicketDetailProps) => {
     <div className="ticket-detail">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <h2>{ticket.title}</h2>
-        <div onClick={(e) => e.stopPropagation()}>
-          <AssigneeSelector
-            ticketId={ticket.id}
-            currentAssigneeId={ticket.assigneeId}
-          />
-        </div>
       </div>
 
       <div className="ticket-meta">
@@ -37,15 +31,11 @@ const TicketDetail = ({ ticket, getUserName }: TicketDetailProps) => {
         </div>
         <div className="ticket-meta-item">
           <span className="ticket-meta-label">Status</span>
-          <span className={`status-badge badge-${ticket.status}`}>
-            {ticket.status}
-          </span>
+          <Badge type="status" value={ticket.status} />
         </div>
         <div className="ticket-meta-item">
           <span className="ticket-meta-label">Priority</span>
-          <span className={`priority-badge priority-${ticket.priority}`}>
-            {ticket.priority}
-          </span>
+          <Badge type="priority" value={ticket.priority} />
         </div>
         <div className="ticket-meta-item">
           <span className="ticket-meta-label">Reporter</span>

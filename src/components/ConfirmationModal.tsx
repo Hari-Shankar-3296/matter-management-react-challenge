@@ -25,8 +25,14 @@ const ConfirmationModal = ({
     return (
         <Modal isOpen={isOpen} onClose={onClose} title={title}>
             <div className="confirmation-content" style={{ padding: '1.5rem' }}>
-                <pre style={{ marginBottom: '1.5rem', color: 'var(--text-secondary)', fontFamily: 'inherit' }}>
-                    <center>{message}</center>
+                <pre style={{
+                    marginBottom: '1.5rem',
+                    color: 'var(--text-secondary)',
+                    fontFamily: 'inherit',
+                    whiteSpace: 'pre-wrap',
+                    textAlign: 'center'
+                }}>
+                    {message}
                 </pre>
                 <div className="form-actions" style={{ display: 'flex', justifyContent: 'center', marginTop: 20, paddingTop: 0, borderTop: 'none' }}>
                     <button className="btn btn-secondary" onClick={onClose}>

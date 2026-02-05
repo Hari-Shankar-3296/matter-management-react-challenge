@@ -20,7 +20,7 @@ const MyTicketsPage = () => {
     const [ticketToDelete, setTicketToDelete] = useState<string | null>(null);
     const [editingTicket, setEditingTicket] = useState<Ticket | null>(null);
     const [isUpdateConfirmOpen, setIsUpdateConfirmOpen] = useState(false);
-    const [pendingUpdateData, setPendingUpdateData] = useState<any>(null);
+    const [pendingUpdateData, setPendingUpdateData] = useState<Partial<Ticket> | null>(null);
 
     const handleEdit = (ticket: Ticket) => {
         setEditingTicket(ticket);

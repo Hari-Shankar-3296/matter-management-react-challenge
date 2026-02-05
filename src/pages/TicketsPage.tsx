@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useTickets, useUpdateTicket, useDeleteTicket, useCreateTicket } from '../hooks/useTickets';
 import { useUsers } from '../hooks/useUsers';
@@ -17,7 +17,7 @@ const TicketsPage = () => {
         search: searchParams.get('search') || undefined,
         status: (searchParams.get('status') as TicketStatus) || undefined,
         priority: (searchParams.get('priority') as TicketPriority) || undefined,
-        sortBy: (searchParams.get('sortBy') as any) || 'date',
+        sortBy: (searchParams.get('sortBy') as 'date' | 'title' | 'priority' | 'dueDate') || 'date',
     });
     const [selectedTicketId, setSelectedTicketId] = useState<string | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,7 +25,18 @@ const TicketsPage = () => {
     const [ticketToDelete, setTicketToDelete] = useState<string | null>(null);
     const [editingTicket, setEditingTicket] = useState<Ticket | null>(null);
     const [isUpdateConfirmOpen, setIsUpdateConfirmOpen] = useState(false);
-    const [pendingUpdateData, setPendingUpdateData] = useState<any>(null);
+    const [pendingUpdateData, setPendingUpdateData] = useState<Partial<Ticket> | null>(null);
+    const [, setSearchParams] = useSearchParams();
+
+    useEffect(() => {
+        const params: Record<string, string> = {};
+        if (filters.search) params.search = filters.search;
+        if (filters.status && filters.status !== 'all') params.status = filters.status;
+        if (filters.priority && filters.priority !== 'all') params.priority = filters.priority;
+        if (filters.sortBy) params.sortBy = filters.sortBy;
+
+        setSearchParams(params, { replace: true });
+    }, [filters, setSearchParams]);
 
     const { data: tickets, isLoading } = useTickets(filters);
     const { data: users } = useUsers();

@@ -17,7 +17,7 @@ const getCurrentUserId = (): string => {
 };
 
 // In-memory store for mock data persistence
-let mockTickets: Ticket[] = [
+const mockTickets: Ticket[] = [
   {
     id: 'ticket-1',
     title: 'Fix login bug',
