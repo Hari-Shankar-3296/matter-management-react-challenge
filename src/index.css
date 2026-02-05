@@ -245,9 +245,7 @@ a:hover {
   font-size: 1.5rem;
 }
 
-.logo-text,
-.gradient-text,
-.login-header h1 {
+.logo-text {
   background: linear-gradient(135deg, var(--primary-400), var(--primary-600));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -786,7 +784,12 @@ a:hover {
   margin-bottom: var(--spacing-lg);
 }
 
-/* .gradient-text styles shared with logo-text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary-400), var(--primary-600));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 .hero-subtitle {
   color: var(--text-secondary);
@@ -816,18 +819,9 @@ a:hover {
   gap: var(--spacing-lg);
 }
 
-.feature-card,
-.login-card,
-.stat-card,
-.chart-card,
-.dashboard-section,
-.ticket-card,
-.profile-card {
+.feature-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-}
-
-.feature-card {
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
   text-align: center;
@@ -867,7 +861,8 @@ a:hover {
 }
 
 .login-card {
-  /* Shared card styles */
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
   padding: var(--spacing-2xl);
   width: 100%;
@@ -889,9 +884,10 @@ a:hover {
 .login-header h1 {
   font-size: 1.5rem;
   margin-bottom: var(--spacing-xs);
-  font-size: 1.5rem;
-  margin-bottom: var(--spacing-xs);
-  /* Gradient styles shared with logo-text */
+  background: linear-gradient(135deg, var(--primary-400), var(--primary-600));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .login-header p {
@@ -939,7 +935,8 @@ a:hover {
 }
 
 .stat-card {
-  /* Shared card styles */
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
   text-align: center;
@@ -966,7 +963,8 @@ a:hover {
 }
 
 .chart-card {
-  /* Shared card styles */
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
 }
@@ -977,7 +975,8 @@ a:hover {
 }
 
 .dashboard-section {
-  /* Shared card styles */
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
 }
@@ -1078,24 +1077,22 @@ a:hover {
 }
 
 /* Custom Scrollbar for Ticket List */
-.ticket-list::-webkit-scrollbar,
-.kanban-column-body::-webkit-scrollbar {
+.ticket-list::-webkit-scrollbar {
   width: 6px;
 }
 
-.ticket-list::-webkit-scrollbar-track,
-.kanban-column-body::-webkit-scrollbar-track {
+.ticket-list::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.ticket-list::-webkit-scrollbar-thumb,
-.kanban-column-body::-webkit-scrollbar-thumb {
+.ticket-list::-webkit-scrollbar-thumb {
   background-color: var(--border-color);
   border-radius: 20px;
 }
 
 .ticket-card {
-  /* Shared card styles */
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   padding: var(--spacing-md);
   cursor: pointer;
@@ -1134,7 +1131,8 @@ a:hover {
 }
 
 .ticket-detail-section {
-  /* Shared card styles */
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
   overflow-y: auto;
@@ -1346,7 +1344,18 @@ a:hover {
 }
 
 /* Custom Scrollbar for Kanban Column */
-/* Scrollbar styles shared with ticket-list */
+.kanban-column-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.kanban-column-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.kanban-column-body::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 20px;
+}
 
 .kanban-empty {
   display: flex;
