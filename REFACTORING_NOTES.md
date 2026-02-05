@@ -254,3 +254,8 @@ src/
 4. **Would have added more features**: I would have added more features to the application based on the requirements
 
 
+## More info
+
+Check CHANGELOG.md and RELEASE_NOTES.md
+
+
