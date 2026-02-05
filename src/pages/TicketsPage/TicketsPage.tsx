@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useTickets, useUpdateTicket, useDeleteTicket, useCreateTicket } from '@/hooks/useTickets/useTickets';
 import { useUsers } from '@/hooks/useUsers/useUsers';
@@ -44,9 +44,9 @@ const TicketsPage = () => {
         return user ? `${user.firstName} ${user.lastName}` : 'Unknown';
     };
 
-    const handleFilterChange = () => {
+    const handleFilterChange = useCallback(() => {
         // No local state update needed, URL params drive the hook
-    };
+    }, []);
 
     const handleAddNew = () => {
         setEditingTicket(null);

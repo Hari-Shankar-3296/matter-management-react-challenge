@@ -90,6 +90,7 @@ exports[`TicketFiltersComponent > renders search input and dropdowns 1`] = `
       />
       <label
         for="dueThisWeek"
+        style="margin-left: 10px;"
       >
         Due this week
       </label>

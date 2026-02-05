@@ -40,7 +40,7 @@ const TicketFiltersComponent = ({ onFilterChange, initialFilters }: TicketFilter
         }, 300);
 
         return () => clearTimeout(timer);
-    }, [searchTerm, status, priority, sortBy, dueThisWeek, setSearchParams]);
+    }, [searchTerm, status, priority, sortBy, dueThisWeek, setSearchParams, onFilterChange, searchParams]);
 
     const updateFilters = (key: string, value: string | boolean) => {
         const newParams = new URLSearchParams(searchParams);
