@@ -6,6 +6,7 @@ import { Ticket, TicketStatus, TicketPriority } from '../types';
 import Modal from '../components/Modal';
 import TicketForm from '../components/TicketForm';
 import { formatDate, isDueThisWeek, isOverdue } from '../utils/dateUtils';
+import { TERMINOLOGY } from '../constants';
 
 const MyTicketsPage = () => {
     useAuth(); // Used for auth check
@@ -30,7 +31,7 @@ const MyTicketsPage = () => {
     };
 
     const handleDelete = (id: string) => {
-        if (window.confirm('Are you sure you want to delete this ticket?')) {
+        if (window.confirm(`Are you sure you want to delete this ${TERMINOLOGY.item}?`)) {
             deleteTicket.mutate(id);
         }
     };
@@ -62,7 +63,7 @@ const MyTicketsPage = () => {
     };
 
     if (isLoading) {
-        return <div className="loading">Loading your tickets...</div>;
+        return <div className="loading">Loading your {TERMINOLOGY.items}...</div>;
     }
 
     const tickets = activeTab === 'assigned' ? myTickets?.assigned : myTickets?.reported;
@@ -70,7 +71,7 @@ const MyTicketsPage = () => {
     return (
         <div className="my-tickets-page">
             <div className="page-header">
-                <h1>My Tickets</h1>
+                <h1>My {TERMINOLOGY.ITEMS}</h1>
             </div>
 
             <div className="tabs">
@@ -150,7 +151,7 @@ const MyTicketsPage = () => {
                     </table>
                 ) : (
                     <div className="empty-state">
-                        <p>No tickets found</p>
+                        <p>No {TERMINOLOGY.items} found</p>
                     </div>
                 )}
             </div>
@@ -158,7 +159,7 @@ const MyTicketsPage = () => {
             <Modal
                 isOpen={isModalOpen}
                 onClose={handleCloseModal}
-                title="Edit Ticket"
+                title={`Edit ${TERMINOLOGY.ITEM}`}
             >
                 <TicketForm
                     ticket={editingTicket}

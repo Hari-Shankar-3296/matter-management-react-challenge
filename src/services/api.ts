@@ -49,6 +49,7 @@ let mockTickets: Ticket[] = [
     description: 'Implement dark mode theme across the application. Ensure all components support both themes.',
     reporterId: 'user-1',
     assigneeId: 'user-3',
+    dueDate: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toISOString(), // 15 days from now
   },
   {
     id: 'ticket-4',

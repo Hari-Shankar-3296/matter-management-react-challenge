@@ -12,6 +12,7 @@ import {
     Tooltip,
     ResponsiveContainer,
 } from 'recharts';
+import { TERMINOLOGY } from '../constants';
 
 const DashboardPage = () => {
     const { user } = useAuth();
@@ -39,7 +40,7 @@ const DashboardPage = () => {
         <div className="dashboard-page">
             <div className="page-header">
                 <h1>Welcome back, {user?.firstName}!</h1>
-                <p className="page-subtitle">Here's an overview of your tickets</p>
+                <p className="page-subtitle">Here's an overview of your {TERMINOLOGY.items.toLowerCase()}</p>
             </div>
 
             {/* Stats Cards */}
@@ -54,18 +55,18 @@ const DashboardPage = () => {
                 </div>
                 <div className="stat-card">
                     <div className="stat-value">{stats?.total || 0}</div>
-                    <div className="stat-label">Total Tickets</div>
+                    <div className="stat-label">Total {TERMINOLOGY.ITEMS}</div>
                 </div>
                 <div className="stat-card">
                     <div className="stat-value">{stats?.open || 0}</div>
-                    <div className="stat-label">Open Tickets</div>
+                    <div className="stat-label">Open {TERMINOLOGY.ITEMS}</div>
                 </div>
             </div>
 
             {/* Charts */}
             <div className="charts-grid">
                 <div className="chart-card">
-                    <h3>Tickets by Status</h3>
+                    <h3>{TERMINOLOGY.ITEMS} by Status</h3>
                     <ResponsiveContainer width="100%" height={250}>
                         <PieChart>
                             <Pie
@@ -87,7 +88,7 @@ const DashboardPage = () => {
                 </div>
 
                 <div className="chart-card">
-                    <h3>Tickets by Priority</h3>
+                    <h3>{TERMINOLOGY.ITEMS} by Priority</h3>
                     <ResponsiveContainer width="100%" height={250}>
                         <BarChart data={priorityData}>
                             <XAxis dataKey="name" />
@@ -106,8 +107,8 @@ const DashboardPage = () => {
             {/* Recent Tickets */}
             <div className="dashboard-section">
                 <div className="section-header">
-                    <h3>My Assigned Tickets</h3>
-                    <Link to="/my-tickets" className="link">
+                    <h3>My Assigned {TERMINOLOGY.ITEMS}</h3>
+                    <Link to={TERMINOLOGY.ROUTES.MY_TICKETS} className="link">
                         View All →
                     </Link>
                 </div>
@@ -124,7 +125,7 @@ const DashboardPage = () => {
                         </div>
                     ))}
                     {(!myTickets?.assigned || myTickets.assigned.length === 0) && (
-                        <div className="empty-mini">No tickets assigned to you</div>
+                        <div className="empty-mini">No {TERMINOLOGY.items.toLowerCase()} assigned to you</div>
                     )}
                 </div>
             </div>

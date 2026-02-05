@@ -257,7 +257,8 @@ a:hover {
   gap: var(--spacing-sm);
 }
 
-.nav-link {
+.nav-link,
+.avatar-circle {
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: var(--radius-md);
   color: var(--text-secondary);
@@ -265,7 +266,12 @@ a:hover {
   transition: all var(--transition-fast);
 }
 
-.nav-link:hover {
+.avatar-circle {
+  border: 1px solid var(--border-color);
+}
+
+.nav-link:hover,
+.avatar-circle:hover {
   background: var(--bg-hover);
   color: var(--text-primary);
 }
@@ -305,6 +311,163 @@ a:hover {
 .user-name {
   color: var(--text-secondary);
   font-weight: 500;
+}
+
+/* ============================================
+   Theme Switch
+   ============================================ */
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 28px;
+  background-color: var(--bg-tertiary);
+  border-radius: 34px;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  padding: 2px;
+}
+
+.theme-switch:hover {
+  border-color: var(--primary-500);
+}
+
+.theme-switch-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  line-height: 1;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.theme-switch-icon.light {
+  left: 6px;
+}
+
+.theme-switch-icon.dark {
+  right: 6px;
+}
+
+.theme-switch-handle {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--primary-500);
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform var(--transition-fast);
+  z-index: 2;
+}
+
+[data-theme="dark"] .theme-switch-handle {
+  transform: translateX(24px);
+}
+
+.user-menu-container {
+  position: relative;
+}
+
+.user-avatar-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--id-primary-500), var(--primary-600));
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  padding: 0;
+}
+
+.user-avatar-btn:hover,
+.user-avatar-btn.active {
+  border-color: var(--primary-300);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.user-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 220px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  padding: var(--spacing-sm);
+  z-index: 1000;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.user-dropdown-header {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: var(--spacing-xs);
+}
+
+.dropdown-name {
+  display: block;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.dropdown-email {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.dropdown-item:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.dropdown-item.danger {
+  color: var(--danger);
+}
+
+.dropdown-item.danger:hover {
+  background: rgba(239, 68, 68, 0.1);
 }
 
 /* ============================================
@@ -395,6 +558,8 @@ a:hover {
   color: var(--text-primary);
   font-size: 1rem;
   transition: all var(--transition-fast);
+  /* Improve select dropdown arrow position */
+  background-position: right 1rem center;
 }
 
 .form-group input:focus,
@@ -881,7 +1046,22 @@ a:hover {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-md);
+  padding-right: var(--spacing-sm);
+}
+
+/* Custom Scrollbar for Ticket List */
+.ticket-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ticket-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.ticket-list::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 20px;
 }
 
 .ticket-card {
@@ -947,7 +1127,7 @@ a:hover {
 .ticket-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-md);
+  gap: var(--spacing-xl);
   margin-bottom: var(--spacing-lg);
   padding-bottom: var(--spacing-lg);
   border-bottom: 1px solid var(--border-color);
@@ -957,6 +1137,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
+  min-width: 100px;
 }
 
 .ticket-meta-label {
@@ -1129,10 +1310,36 @@ a:hover {
 .kanban-column-body {
   flex: 1;
   padding: var(--spacing-md);
+  padding-right: var(--spacing-sm);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-md);
   overflow-y: auto;
+}
+
+/* Custom Scrollbar for Kanban Column */
+.kanban-column-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.kanban-column-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.kanban-column-body::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 20px;
+}
+
+.kanban-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: var(--text-muted);
+  font-style: italic;
+  text-align: center;
+  min-height: 100px;
 }
 
 .kanban-column.drag-over {

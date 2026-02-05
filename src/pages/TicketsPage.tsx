@@ -6,6 +6,7 @@ import TicketFiltersComponent from '../components/TicketFiltersComponent';
 import Modal from '../components/Modal';
 import TicketForm from '../components/TicketForm';
 import { formatDate, isDueThisWeek, isOverdue } from '../utils/dateUtils';
+import { TERMINOLOGY } from '../constants';
 
 const TicketsPage = () => {
     const [filters, setFilters] = useState<TicketFilters>({});
@@ -27,6 +28,12 @@ const TicketsPage = () => {
         return user ? `${user.firstName} ${user.lastName}` : 'Unknown';
     };
 
+    const getUserInitials = (userId: string | undefined) => {
+        if (!userId) return null;
+        const user = users?.find((u) => u.id === userId);
+        return user ? `${user.firstName[0]}${user.lastName[0]}`.toUpperCase() : null;
+    };
+
     const handleFilterChange = (newFilters: TicketFilters) => {
         setFilters(newFilters);
     };
@@ -42,7 +49,7 @@ const TicketsPage = () => {
     };
 
     const handleDelete = (id: string) => {
-        if (window.confirm('Are you sure you want to delete this ticket?')) {
+        if (window.confirm(`Are you sure you want to delete this ${TERMINOLOGY.item}?`)) {
             deleteTicket.mutate(id);
             if (selectedTicketId === id) {
                 setSelectedTicketId(null);
@@ -83,16 +90,16 @@ const TicketsPage = () => {
     };
 
     if (isLoading) {
-        return <div className="loading">Loading tickets...</div>;
+        return <div className="loading">Loading {TERMINOLOGY.items}...</div>;
     }
 
     return (
         <div className="tickets-page">
             <div className="ticket-list-section">
                 <div className="page-header">
-                    <h1>Tickets</h1>
+                    <h1>{TERMINOLOGY.ITEMS}</h1>
                     <button className="btn btn-primary" onClick={handleAddNew}>
-                        + Add Ticket
+                        + Add {TERMINOLOGY.ITEM}
                     </button>
                 </div>
 
@@ -101,59 +108,88 @@ const TicketsPage = () => {
                     initialFilters={filters}
                 />
 
-                <div className="ticket-list">
-                    {tickets?.map((ticket) => (
-                        <div
-                            key={ticket.id}
-                            className={`ticket-card ${selectedTicketId === ticket.id ? 'selected' : ''}`}
-                            onClick={() => setSelectedTicketId(ticket.id)}
-                        >
-                            <div className="ticket-card-header">
-                                <span className="ticket-card-title">
-                                    {ticket.title}
-                                    {isDueThisWeek(ticket.dueDate) && !isOverdue(ticket.dueDate) && (
-                                        <span className="due-badge due-this-week">Due this week</span>
-                                    )}
-                                    {isOverdue(ticket.dueDate) && (
-                                        <span className="due-badge overdue">Overdue</span>
-                                    )}
-                                </span>
-                                <div className="ticket-card-actions">
-                                    <button
-                                        className="action-btn"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            handleEdit(ticket);
-                                        }}
-                                    >
-                                        ✏️
-                                    </button>
-                                    <button
-                                        className="action-btn delete"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            handleDelete(ticket.id);
-                                        }}
-                                    >
-                                        🗑️
-                                    </button>
+                <div className="ticket-list" style={{ maxHeight: '65vh', overflowY: 'auto' }}>
+                    {tickets?.map((ticket) => {
+                        const assigneeInitials = getUserInitials(ticket.assigneeId);
+                        const dueThisWeek = isDueThisWeek(ticket.dueDate);
+                        const overdue = isOverdue(ticket.dueDate);
+
+                        return (
+                            <div
+                                key={ticket.id}
+                                className={`ticket-card ${selectedTicketId === ticket.id ? 'selected' : ''}`}
+                                onClick={() => setSelectedTicketId(ticket.id)}
+                            >
+                                <div className="ticket-card-header">
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: 1, minWidth: 0 }}>
+                                        <span className="ticket-card-title" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                                            {ticket.title}
+                                        </span>
+                                        {dueThisWeek && !overdue && (
+                                            <span className="due-badge due-this-week" style={{ flexShrink: 0 }}>Due this week</span>
+                                        )}
+                                        {overdue && (
+                                            <span className="due-badge overdue" style={{ flexShrink: 0 }}>Overdue</span>
+                                        )}
+                                    </div>
+                                    <div className="ticket-card-actions">
+                                        <button
+                                            className="action-btn"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleEdit(ticket);
+                                            }}
+                                        >
+                                            ✏️
+                                        </button>
+                                        <button
+                                            className="action-btn delete"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleDelete(ticket.id);
+                                            }}
+                                        >
+                                            🗑️
+                                        </button>
+                                    </div>
+                                </div>
+                                <div className="ticket-card-meta">
+                                    <div style={{ display: 'flex', gap: '8px', alignItems: 'center', position: 'relative' }}>
+                                        <span className={`status-badge badge-${ticket.status}`}>
+                                            {ticket.status}
+                                        </span>
+                                        <span className={`priority-badge priority-${ticket.priority}`}>
+                                            {ticket.priority}
+                                        </span>
+                                        <span className="ticket-card-date">
+                                            {formatDate(ticket.createdAt)}
+                                        </span>
+                                        {assigneeInitials && (
+                                            <div style={{ position: 'absolute', right: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                                <p className='ticket-card-date'>Assigned to </p>
+                                                <div title={`Assigned to ${getUserName(ticket.assigneeId)}`} style={{
+                                                    width: '24px',
+                                                    height: '24px',
+                                                    borderRadius: '50%',
+                                                    background: 'var(--primary-500)',
+                                                    color: 'white',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    fontSize: '0.7rem',
+                                                    fontWeight: 'bold'
+                                                }}>
+                                                    {assigneeInitials}
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
-                            <div className="ticket-card-meta">
-                                <span className={`status-badge badge-${ticket.status}`}>
-                                    {ticket.status}
-                                </span>
-                                <span className={`priority-badge priority-${ticket.priority}`}>
-                                    {ticket.priority}
-                                </span>
-                                <span className="ticket-card-date">
-                                    {formatDate(ticket.createdAt)}
-                                </span>
-                            </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                     {(!tickets || tickets.length === 0) && (
-                        <div className="empty-state">No tickets found</div>
+                        <div className="empty-state">No {TERMINOLOGY.items} found</div>
                     )}
                 </div>
             </div>
@@ -161,7 +197,15 @@ const TicketsPage = () => {
             <div className="ticket-detail-section">
                 {selectedTicket ? (
                     <div className="ticket-detail">
-                        <h2>{selectedTicket.title}</h2>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                            <h2>{selectedTicket.title}</h2>
+                            {getUserInitials(selectedTicket.assigneeId) && (
+                                <div className="user-avatar-btn" style={{ width: '48px', height: '48px', fontSize: '1.2rem', cursor: 'default' }} title={`Assigned to ${getUserName(selectedTicket.assigneeId)}`}>
+                                    {getUserInitials(selectedTicket.assigneeId)}
+                                </div>
+                            )}
+                        </div>
+
                         <div className="ticket-meta">
                             <div className="ticket-meta-item">
                                 <span className="ticket-meta-label">ID</span>
@@ -213,7 +257,7 @@ const TicketsPage = () => {
                     </div>
                 ) : (
                     <div className="ticket-detail-empty">
-                        Select a ticket to view details
+                        Select a {TERMINOLOGY.item} to view details
                     </div>
                 )}
             </div>
@@ -221,7 +265,7 @@ const TicketsPage = () => {
             <Modal
                 isOpen={isModalOpen}
                 onClose={handleCloseModal}
-                title={editingTicket ? 'Edit Ticket' : 'Create Ticket'}
+                title={editingTicket ? `Edit ${TERMINOLOGY.ITEM}` : `Create ${TERMINOLOGY.ITEM}`}
             >
                 <TicketForm
                     ticket={editingTicket}

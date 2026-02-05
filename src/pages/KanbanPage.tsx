@@ -4,6 +4,7 @@ import { useTickets, useUpdateTicket, useDeleteTicket, useCreateTicket } from '.
 import KanbanColumn from '../components/KanbanColumn';
 import Modal from '../components/Modal';
 import TicketForm from '../components/TicketForm';
+import { TERMINOLOGY } from '../constants';
 
 const KanbanPage = () => {
     const { data: tickets, isLoading } = useTickets();
@@ -33,7 +34,7 @@ const KanbanPage = () => {
     };
 
     const handleDelete = (id: string) => {
-        if (window.confirm('Are you sure you want to delete this ticket?')) {
+        if (window.confirm(`Are you sure you want to delete this ${TERMINOLOGY.item}?`)) {
             deleteTicket.mutate(id);
         }
     };
@@ -66,7 +67,7 @@ const KanbanPage = () => {
     };
 
     if (isLoading) {
-        return <div className="loading">Loading tickets...</div>;
+        return <div className="loading">Loading {TERMINOLOGY.items}...</div>;
     }
 
     return (
@@ -74,7 +75,7 @@ const KanbanPage = () => {
             <div className="page-header">
                 <h1>Kanban Board</h1>
                 <button className="btn btn-primary" onClick={handleAddNew}>
-                    + Add Ticket
+                    + Add {TERMINOLOGY.ITEM}
                 </button>
             </div>
 
@@ -95,7 +96,7 @@ const KanbanPage = () => {
             <Modal
                 isOpen={isModalOpen}
                 onClose={handleCloseModal}
-                title={editingTicket ? 'Edit Ticket' : 'Create Ticket'}
+                title={editingTicket ? `Edit ${TERMINOLOGY.ITEM}` : `Create ${TERMINOLOGY.ITEM}`}
             >
                 <TicketForm
                     ticket={editingTicket}

@@ -1,6 +1,7 @@
 
 import { TicketFilters } from '../types';
 import { useSearchParams } from 'react-router-dom';
+import { TERMINOLOGY } from '../constants';
 
 /**
  * Ticket Filters Component
@@ -44,7 +45,7 @@ const TicketFiltersComponent = ({ onFilterChange, initialFilters }: TicketFilter
         <div className="ticket-filters">
             <input
                 type="text"
-                placeholder="Search tickets..."
+                placeholder={`Search ${TERMINOLOGY.items}...`}
                 value={search}
                 onChange={(e) => updateFilters('search', e.target.value)}
             />

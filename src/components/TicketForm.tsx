@@ -3,6 +3,7 @@ import { Ticket, TicketStatus, TicketPriority } from '../types';
 import { useUsers } from '../hooks/useUsers';
 import { useAuth } from '../contexts/AuthContext';
 import { formatDateForInput } from '../utils/dateUtils';
+import { TERMINOLOGY } from '../constants';
 
 interface TicketFormProps {
     ticket?: Ticket | null;
@@ -74,7 +75,7 @@ const TicketForm = ({ ticket, onSubmit, onCancel, isLoading }: TicketFormProps) 
             {ticket && (
                 <div className="form-row">
                     <div className="form-group">
-                        <label>Ticket ID</label>
+                        <label>{TERMINOLOGY.ITEM} ID</label>
                         <input type="text" value={`#${ticket.id}`} disabled />
                     </div>
                     <div className="form-group">
@@ -102,7 +103,7 @@ const TicketForm = ({ ticket, onSubmit, onCancel, isLoading }: TicketFormProps) 
                     type="text"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    placeholder="Enter ticket title"
+                    placeholder={`Enter ${TERMINOLOGY.item} title`}
                     required
                     autoFocus
                 />
@@ -114,7 +115,7 @@ const TicketForm = ({ ticket, onSubmit, onCancel, isLoading }: TicketFormProps) 
                     id="description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    placeholder="Enter ticket description"
+                    placeholder={`Enter ${TERMINOLOGY.item} description`}
                     rows={4}
                 />
             </div>
@@ -183,7 +184,7 @@ const TicketForm = ({ ticket, onSubmit, onCancel, isLoading }: TicketFormProps) 
                     className="btn btn-primary"
                     disabled={isLoading || !title.trim()}
                 >
-                    {isLoading ? 'Saving...' : ticket ? 'Update Ticket' : 'Create Ticket'}
+                    {isLoading ? 'Saving...' : ticket ? `Update ${TERMINOLOGY.ITEM}` : `Create ${TERMINOLOGY.ITEM}`}
                 </button>
             </div>
         </form>

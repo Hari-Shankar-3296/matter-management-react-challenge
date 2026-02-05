@@ -38,7 +38,7 @@ const TicketList = ({ tickets, onSelect, selectedId }: TicketListProps) => {
   }, [tickets, onSelect, selectedId]);
 
   if (tickets.length === 0) {
-    return <div>No tickets found</div>;
+    return <div>No matters found</div>;
   }
 
   return <div>{ticketItems}</div>;

@@ -50,7 +50,7 @@ const KanbanColumn = ({ status, title, tickets, onDrop, onEdit, onDelete }: Kanb
                 <h3 className="kanban-column-title">{title}</h3>
                 <span className="kanban-column-count">{tickets.length}</span>
             </div>
-            <div className="kanban-column-content">
+            <div className="kanban-column-body">
                 {tickets.map((ticket) => (
                     <KanbanCard
                         key={ticket.id}
@@ -60,7 +60,7 @@ const KanbanColumn = ({ status, title, tickets, onDrop, onEdit, onDelete }: Kanb
                     />
                 ))}
                 {tickets.length === 0 && (
-                    <div className="kanban-empty">No tickets</div>
+                    <div className="kanban-empty">No matters</div>
                 )}
             </div>
         </div>
