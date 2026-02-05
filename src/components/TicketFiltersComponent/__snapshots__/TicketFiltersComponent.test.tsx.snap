@@ -1,0 +1,86 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TicketFiltersComponent > renders search input and dropdowns 1`] = `
+<DocumentFragment>
+  <div
+    class="ticket-filters"
+  >
+    <input
+      placeholder="Search matters..."
+      type="text"
+      value=""
+    />
+    <select>
+      <option
+        value=""
+      >
+        All Status
+      </option>
+      <option
+        value="open"
+      >
+        Open
+      </option>
+      <option
+        value="in-progress"
+      >
+        In Progress
+      </option>
+      <option
+        value="closed"
+      >
+        Closed
+      </option>
+    </select>
+    <select>
+      <option
+        value=""
+      >
+        All Priority
+      </option>
+      <option
+        value="critical"
+      >
+        Critical
+      </option>
+      <option
+        value="high"
+      >
+        High
+      </option>
+      <option
+        value="medium"
+      >
+        Medium
+      </option>
+      <option
+        value="low"
+      >
+        Low
+      </option>
+    </select>
+    <select>
+      <option
+        value="date"
+      >
+        Sort by Date
+      </option>
+      <option
+        value="title"
+      >
+        Sort by Title
+      </option>
+      <option
+        value="priority"
+      >
+        Sort by Priority
+      </option>
+      <option
+        value="dueDate"
+      >
+        Sort by Due Date
+      </option>
+    </select>
+  </div>
+</DocumentFragment>
+`;

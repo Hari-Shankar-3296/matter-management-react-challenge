@@ -1,0 +1,95 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`HomePage > renders correctly for authenticated user 1`] = `
+<DocumentFragment>
+  <div
+    class="home-page"
+  >
+    <div
+      data-testid="hero"
+    >
+      Hero: Welcome John
+    </div>
+    <section
+      class="features"
+    >
+      <h2
+        class="features-title"
+      >
+        Features
+      </h2>
+      <div
+        class="features-grid"
+      >
+        <div
+          data-testid="feature"
+        >
+          Matter Management
+        </div>
+        <div
+          data-testid="feature"
+        >
+          Kanban Board
+        </div>
+        <div
+          data-testid="feature"
+        >
+          Smart Filters
+        </div>
+        <div
+          data-testid="feature"
+        >
+          Multi-User
+        </div>
+      </div>
+    </section>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`HomePage > renders correctly for unauthenticated user 1`] = `
+<DocumentFragment>
+  <div
+    class="home-page"
+  >
+    <div
+      data-testid="hero"
+    >
+      Hero: Welcome Guest
+    </div>
+    <section
+      class="features"
+    >
+      <h2
+        class="features-title"
+      >
+        Features
+      </h2>
+      <div
+        class="features-grid"
+      >
+        <div
+          data-testid="feature"
+        >
+          Matter Management
+        </div>
+        <div
+          data-testid="feature"
+        >
+          Kanban Board
+        </div>
+        <div
+          data-testid="feature"
+        >
+          Smart Filters
+        </div>
+        <div
+          data-testid="feature"
+        >
+          Multi-User
+        </div>
+      </div>
+    </section>
+  </div>
+</DocumentFragment>
+`;

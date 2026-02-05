@@ -226,16 +226,14 @@ src/
 - [ ] Change status with resolution reason modal - **Done** (Partially implemented via Edit, can be added in description for now, thought to add once the card is closed)
 - [x] All Boards page (Kanban D&D, Table View) - **Done**
 - [x] Analytics page (Charts with sample data) - **Done**
-- [ ] Add Views - Thought of adding this but the scope increased - so I dropped it
+- [ ] Add Views - Thought of adding this but the scope increased - so I dropped the plan
 - [x] Add Personal Views/Matter (My Matters page - shows user specific tickets)
 - [x] Delete/Edit matter modal confirmation (Theme consistent)
 - [x] Enable user to switch themes
 
 ### Extras
 - [ ] Add Unit Tests with Jest and RTL
-- [x] UI Consistency across OS/browsers (Input fields, Buttons)
-- [ ] Use Select Box from a Component library
-- [ ] Use date picker from a Component library
+- [x] tried to acheive UI Consistency across OS/browsers (Input fields, Buttons)
 
 ---
 

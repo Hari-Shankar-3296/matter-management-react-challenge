@@ -1,0 +1,84 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`HeroSection > renders hero content for authenticated user 1`] = `
+<DocumentFragment>
+  <section
+    class="hero"
+  >
+    <div
+      class="hero-content"
+    >
+      <h1
+        class="hero-title"
+      >
+        Welcome back, 
+        <span
+          class="gradient-text"
+        >
+          John
+        </span>
+        !
+      </h1>
+      <p
+        class="hero-subtitle"
+      >
+        Manage your matters efficiently with our modern matter management system. Track progress, collaborate with your team, and get things done.
+      </p>
+      <div
+        class="hero-actions"
+      >
+        <a
+          class="btn btn-primary btn-lg"
+          href="/tickets"
+        >
+          View All Matters
+        </a>
+        <a
+          class="btn btn-secondary btn-lg"
+          href="/my-tickets"
+        >
+          My Matters
+        </a>
+      </div>
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`HeroSection > renders hero content for unauthenticated user 1`] = `
+<DocumentFragment>
+  <section
+    class="hero"
+  >
+    <div
+      class="hero-content"
+    >
+      <h1
+        class="hero-title"
+      >
+        Welcome to 
+        <span
+          class="gradient-text"
+        >
+          Matter Management
+        </span>
+      </h1>
+      <p
+        class="hero-subtitle"
+      >
+        Manage your matters efficiently with our modern matter management system. Track progress, collaborate with your team, and get things done.
+      </p>
+      <div
+        class="hero-actions"
+      >
+        <a
+          class="btn btn-primary btn-lg"
+          href="/login"
+        >
+          Sign In
+        </a>
+      </div>
+    </div>
+  </section>
+</DocumentFragment>
+`;

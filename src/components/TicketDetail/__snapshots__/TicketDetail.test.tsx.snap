@@ -1,0 +1,109 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TicketDetail Component > renders ticket details correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="ticket-detail"
+  >
+    <div
+      style="display: flex; justify-content: space-between; align-items: flex-start;"
+    >
+      <h2>
+        Test Ticket
+      </h2>
+    </div>
+    <div
+      class="ticket-meta"
+    >
+      <div
+        class="ticket-meta-item"
+      >
+        <span
+          class="ticket-meta-label"
+        >
+          ID
+        </span>
+        <span>
+          #1
+        </span>
+      </div>
+      <div
+        class="ticket-meta-item"
+      >
+        <span
+          class="ticket-meta-label"
+        >
+          Status
+        </span>
+        <div
+          data-testid="badge"
+        >
+          open
+        </div>
+      </div>
+      <div
+        class="ticket-meta-item"
+      >
+        <span
+          class="ticket-meta-label"
+        >
+          Priority
+        </span>
+        <div
+          data-testid="badge"
+        >
+          high
+        </div>
+      </div>
+      <div
+        class="ticket-meta-item"
+      >
+        <span
+          class="ticket-meta-label"
+        >
+          Reporter
+        </span>
+        <span>
+          John Doe
+        </span>
+      </div>
+      <div
+        class="ticket-meta-item"
+      >
+        <span
+          class="ticket-meta-label"
+        >
+          Assignee
+        </span>
+        <div
+          data-testid="assignee-selector"
+        >
+          AssigneeSelector
+        </div>
+      </div>
+      <div
+        class="ticket-meta-item"
+      >
+        <span
+          class="ticket-meta-label"
+        >
+          Created
+        </span>
+        <span>
+          Oct 25, 2023
+        </span>
+      </div>
+    </div>
+    <div
+      class="ticket-description"
+    >
+      <h3>
+        Description
+      </h3>
+      <p>
+        Detailed Description
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

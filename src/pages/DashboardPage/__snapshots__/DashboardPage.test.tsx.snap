@@ -1,0 +1,101 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`DashboardPage > renders welcome message and stat cards 1`] = `
+<DocumentFragment>
+  <div
+    class="dashboard-page"
+  >
+    <div
+      class="page-header"
+    >
+      <h1>
+        Welcome back, Harishankar!
+      </h1>
+      <p
+        class="page-subtitle"
+      >
+        Here's an overview of your matters
+      </p>
+    </div>
+    <div
+      class="stats-grid"
+    >
+      <div
+        class="stat-card"
+      >
+        <div
+          class="stat-value"
+        >
+          0
+        </div>
+        <div
+          class="stat-label"
+        >
+          Assigned to Me
+        </div>
+      </div>
+      <div
+        class="stat-card"
+      >
+        <div
+          class="stat-value"
+        >
+          0
+        </div>
+        <div
+          class="stat-label"
+        >
+          Reported by Me
+        </div>
+      </div>
+      <div
+        class="stat-card"
+      >
+        <div
+          class="stat-value"
+        >
+          10
+        </div>
+        <div
+          class="stat-label"
+        >
+          Total Matters
+        </div>
+      </div>
+      <div
+        class="stat-card"
+      >
+        <div
+          class="stat-value"
+        >
+          5
+        </div>
+        <div
+          class="stat-label"
+        >
+          Open Matters
+        </div>
+      </div>
+    </div>
+    <div
+      class="charts-grid"
+    >
+      <div
+        data-testid="dashboard-chart"
+      >
+        Matters by Status
+      </div>
+      <div
+        data-testid="dashboard-chart"
+      >
+        Matters by Priority
+      </div>
+    </div>
+    <div
+      data-testid="ticket-list-mini"
+    >
+      My Assigned Matters
+    </div>
+  </div>
+</DocumentFragment>
+`;

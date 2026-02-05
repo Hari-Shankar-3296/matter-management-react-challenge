@@ -1,0 +1,34 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`KanbanColumn > renders column title and ticket count 1`] = `
+<DocumentFragment>
+  <div
+    class="kanban-column "
+  >
+    <div
+      class="kanban-column-header"
+      style="border-top-color: rgb(59, 130, 246);"
+    >
+      <h3
+        class="kanban-column-title"
+      >
+        Open Matters
+      </h3>
+      <span
+        class="kanban-column-count"
+      >
+        1
+      </span>
+    </div>
+    <div
+      class="kanban-column-body"
+    >
+      <div
+        data-testid="kanban-card"
+      >
+        Ticket 1
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

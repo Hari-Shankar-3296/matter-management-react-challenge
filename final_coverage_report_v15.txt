@@ -1,0 +1,172 @@
+
+> matter-management-react-challenge@1.0.0 test
+> vitest --coverage --run -u
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+
+ RUN  v1.6.1 /Users/gnanapriya/projects/matter-management-react-challenge
+      Coverage enabled with v8
+
+stderr | src/pages/TicketsPage/TicketsPage.test.tsx > TicketsPage > renders page header and add button
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ ✓ src/contexts/AuthContext/AuthContext.test.tsx  (4 tests) 49ms
+ ✓ src/pages/MyTicketsPage/MyTicketsPage.test.tsx  (3 tests) 44ms
+ ✓ src/contexts/ThemeContext/ThemeContext.test.tsx  (4 tests) 55ms
+ ✓ src/pages/KanbanPage/KanbanPage.test.tsx  (6 tests) 60ms
+ ✓ src/components/TicketCard/TicketCard.test.tsx  (4 tests) 70ms
+ ✓ src/pages/TicketsPage/TicketsPage.test.tsx  (4 tests) 59ms
+ ✓ src/pages/UserProfilePage/UserProfilePage.test.tsx  (4 tests) 65ms
+ ✓ src/hooks/useTickets/useTickets.test.tsx  (7 tests) 398ms
+ ✓ src/utils/dateUtils/dateUtils.test.ts  (10 tests) 19ms
+stderr | src/pages/LoginPage/LoginPage.test.tsx > LoginPage > renders login form correctly
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ ✓ src/pages/DashboardPage/DashboardPage.test.tsx  (3 tests) 39ms
+ ✓ src/components/TicketTableRow/TicketTableRow.test.tsx  (3 tests) 41ms
+stderr | src/components/Header/Header.test.tsx > Header Component > renders the app logo and name
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ ✓ src/components/KanbanCard/KanbanCard.test.tsx  (3 tests) 57ms
+ ✓ src/components/Header/Header.test.tsx  (5 tests) 100ms
+ ✓ src/pages/LoginPage/LoginPage.test.tsx  (4 tests) 128ms
+ ✓ src/components/TicketForm/TicketForm.test.tsx  (4 tests) 105ms
+stderr | src/components/ProtectedRoute/ProtectedRoute.test.tsx > ProtectedRoute > renders children when authenticated
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ ✓ src/components/ProtectedRoute/ProtectedRoute.test.tsx  (3 tests) 25ms
+ ✓ src/components/Modal/Modal.test.tsx  (5 tests) 41ms
+ ✓ src/utils/queryKeys/queryKeys.test.ts  (11 tests) 3ms
+ ✓ src/components/AssigneeSelector/AssigneeSelector.test.tsx  (3 tests) 112ms
+ ✓ src/components/ConfirmationModal/ConfirmationModal.test.tsx  (3 tests) 61ms
+ ✓ src/components/TicketDetail/TicketDetail.test.tsx  (2 tests) 44ms
+ ✓ src/components/KanbanColumn/KanbanColumn.test.tsx  (2 tests) 49ms
+ ✓ src/hooks/useUsers/useUsers.test.tsx  (2 tests) 123ms
+stderr | src/pages/HomePage/HomePage.test.tsx > HomePage > renders correctly for unauthenticated user
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ ✓ src/pages/HomePage/HomePage.test.tsx  (2 tests) 130ms
+ ✓ src/components/Badge/Badge.test.tsx  (5 tests) 38ms
+stderr | src/components/TicketFiltersComponent/TicketFiltersComponent.test.tsx > TicketFiltersComponent > renders search input and dropdowns
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ ✓ src/components/TicketFiltersComponent/TicketFiltersComponent.test.tsx  (3 tests) 80ms
+ ✓ src/components/TicketTable/TicketTable.test.tsx  (2 tests) 31ms
+ ✓ src/components/TicketList/TicketList.test.tsx  (2 tests) 36ms
+ ✓ src/components/TicketListMini/TicketListMini.test.tsx  (3 tests) 32ms
+stderr | src/components/HeroSection/HeroSection.test.tsx > HeroSection > renders hero content for unauthenticated user
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ ✓ src/components/HeroSection/HeroSection.test.tsx  (2 tests) 36ms
+ ✓ src/components/DashboardChart/DashboardChart.test.tsx  (2 tests) 51ms
+stderr | src/components/Layout/Layout.test.tsx > Layout > renders header and outlet content
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ ✓ src/components/Layout/Layout.test.tsx  (1 test) 25ms
+ ✓ src/components/TeamMemberItem/TeamMemberItem.test.tsx  (1 test) 24ms
+ ✓ src/components/StatCard/StatCard.test.tsx  (2 tests) 25ms
+ ✓ src/components/ProfileSection/ProfileSection.test.tsx  (1 test) 23ms
+ ✓ src/components/FeatureCard/FeatureCard.test.tsx  (1 test) 21ms
+ ✓ src/services/users/users.test.ts  (5 tests) 1007ms
+ ✓ src/services/api/api.test.ts  (11 tests) 3528ms
+
+ Test Files  38 passed (38)
+      Tests  142 passed (142)
+   Start at  03:24:32
+   Duration  4.47s (transform 1.34s, setup 1ms, collect 5.17s, tests 6.83s, environment 14.36s, prepare 2.65s)
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   89.32 |    76.23 |   72.83 |   89.32 |                   
+ ...eact-challenge |       0 |        0 |       0 |       0 |                   
+  .eslintrc.cjs    |       0 |        0 |       0 |       0 | 1-18              
+ ...-challenge/src |   33.76 |        0 |       0 |   33.76 |                   
+  app.tsx          |       0 |        0 |       0 |       0 | 1-51              
+  constants.ts     |     100 |      100 |     100 |     100 |                   
+ ...signeeSelector |   84.79 |       95 |   71.42 |   84.79 |                   
+  ...eSelector.tsx |   84.79 |       95 |   71.42 |   84.79 | 34-42,62-64,74-94 
+ ...mponents/Badge |     100 |      100 |     100 |     100 |                   
+  Badge.tsx        |     100 |      100 |     100 |     100 |                   
+ ...firmationModal |     100 |    66.66 |     100 |     100 |                   
+  ...tionModal.tsx |     100 |    66.66 |     100 |     100 | 42                
+ ...DashboardChart |     100 |      100 |      50 |     100 |                   
+  ...oardChart.tsx |     100 |      100 |      50 |     100 |                   
+ ...ts/FeatureCard |     100 |      100 |     100 |     100 |                   
+  FeatureCard.tsx  |     100 |      100 |     100 |     100 |                   
+ ...ponents/Header |   94.26 |    73.68 |   77.77 |   94.26 |                   
+  Header.tsx       |   94.26 |    73.68 |   77.77 |   94.26 | 18-21,103-105     
+ ...ts/HeroSection |     100 |      100 |     100 |     100 |                   
+  HeroSection.tsx  |     100 |      100 |     100 |     100 |                   
+ ...nts/KanbanCard |   94.89 |       20 |   33.33 |   94.89 |                   
+  KanbanCard.tsx   |   94.89 |       20 |   33.33 |   94.89 | 64,69-71,82       
+ ...s/KanbanColumn |   91.42 |       80 |      50 |   91.42 |                   
+  KanbanColumn.tsx |   91.42 |       80 |      50 |   91.42 | 18-21,24-25       
+ ...ponents/Layout |     100 |      100 |     100 |     100 |                   
+  Layout.tsx       |     100 |      100 |     100 |     100 |                   
+ ...mponents/Modal |     100 |      100 |     100 |     100 |                   
+  Modal.tsx        |     100 |      100 |     100 |     100 |                   
+ ...ProfileSection |     100 |      100 |     100 |     100 |                   
+  ...leSection.tsx |     100 |      100 |     100 |     100 |                   
+ ...ProtectedRoute |     100 |      100 |     100 |     100 |                   
+  ...ctedRoute.tsx |     100 |      100 |     100 |     100 |                   
+ ...nents/StatCard |     100 |       50 |     100 |     100 |                   
+  StatCard.tsx     |     100 |       50 |     100 |     100 | 13                
+ ...TeamMemberItem |     100 |      100 |     100 |     100 |                   
+  ...emberItem.tsx |     100 |      100 |     100 |     100 |                   
+ ...nts/TicketCard |   97.43 |       50 |      80 |   97.43 |                   
+  TicketCard.tsx   |   97.43 |       50 |      80 |   97.43 | 29,32             
+ ...s/TicketDetail |   84.61 |       50 |     100 |   84.61 |                   
+  TicketDetail.tsx |   84.61 |       50 |     100 |   84.61 | 56-67             
+ ...ltersComponent |   97.61 |       80 |   66.66 |   97.61 |                   
+  ...Component.tsx |   97.61 |       80 |   66.66 |   97.61 | 31-32             
+ ...nts/TicketForm |   92.68 |    60.52 |      60 |   92.68 |                   
+  TicketForm.tsx   |   92.68 |    60.52 |      60 |   92.68 | ...,67-77,221-223 
+ ...nts/TicketList |     100 |      100 |     100 |     100 |                   
+  TicketList.tsx   |     100 |      100 |     100 |     100 |                   
+ ...TicketListMini |     100 |      100 |     100 |     100 |                   
+  ...tListMini.tsx |     100 |      100 |     100 |     100 |                   
+ ...ts/TicketTable |     100 |       75 |     100 |     100 |                   
+  TicketTable.tsx  |     100 |       75 |     100 |     100 | 30                
+ ...TicketTableRow |   96.61 |     37.5 |      75 |   96.61 |                   
+  ...tTableRow.tsx |   96.61 |     37.5 |      75 |   96.61 | 20,23             
+ ...ts/AuthContext |   96.15 |       80 |     100 |   96.15 |                   
+  AuthContext.tsx  |   96.15 |       80 |     100 |   96.15 | 29-30,44          
+ ...s/ThemeContext |    88.6 |    76.47 |   85.71 |    88.6 |                   
+  ThemeContext.tsx |    88.6 |    76.47 |   85.71 |    88.6 | 19-20,26-27,47-51 
+ ...oks/useTickets |     100 |      100 |     100 |     100 |                   
+  useTickets.ts    |     100 |      100 |     100 |     100 |                   
+ ...hooks/useUsers |     100 |      100 |     100 |     100 |                   
+  useUsers.ts      |     100 |      100 |     100 |     100 |                   
+ .../DashboardPage |     100 |    66.66 |     100 |     100 |                   
+  ...boardPage.tsx |     100 |    66.66 |     100 |     100 | 18-27,41-42       
+ ...pages/HomePage |     100 |      100 |     100 |     100 |                   
+  HomePage.tsx     |     100 |      100 |     100 |     100 |                   
+ ...ges/KanbanPage |   80.64 |    93.33 |   45.45 |   80.64 |                   
+  KanbanPage.tsx   |   80.64 |    93.33 |   45.45 |   80.64 | ...69,72-82,85-87 
+ ...ages/LoginPage |     100 |    83.33 |     100 |     100 |                   
+  LoginPage.tsx    |     100 |    83.33 |     100 |     100 | 47,66             
+ .../MyTicketsPage |   72.66 |    69.23 |   27.27 |   72.66 |                   
+  ...cketsPage.tsx |   72.66 |    69.23 |   27.27 |   72.66 | ...75,78-79,82-83 
+ ...es/TicketsPage |   69.89 |       40 |   23.07 |   69.89 |                   
+  TicketsPage.tsx  |   69.89 |       40 |   23.07 |   69.89 | ...26-127,130-131 
+ ...serProfilePage |   98.87 |      100 |     100 |   98.87 |                   
+  ...ofilePage.tsx |   98.87 |      100 |     100 |   98.87 | 62                
+ ...c/services/api |   88.26 |    71.92 |     100 |   88.26 |                   
+  api.ts           |   88.26 |    71.92 |     100 |   88.26 | ...68-169,191-192 
+ ...services/users |     100 |      100 |     100 |     100 |                   
+  users.ts         |     100 |      100 |     100 |     100 |                   
+ ...tils/dateUtils |     100 |      100 |     100 |     100 |                   
+  dateUtils.ts     |     100 |      100 |     100 |     100 |                   
+ ...tils/queryKeys |     100 |      100 |   91.66 |     100 |                   
+  queryKeys.ts     |     100 |      100 |   91.66 |     100 |                   
+-------------------|---------|----------|---------|---------|-------------------

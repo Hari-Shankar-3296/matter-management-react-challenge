@@ -1,0 +1,24 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Layout > renders header and outlet content 1`] = `
+<DocumentFragment>
+  <div
+    class="layout"
+  >
+    <div
+      data-testid="header"
+    >
+      Header
+    </div>
+    <main
+      class="main-content"
+    >
+      <div
+        data-testid="content"
+      >
+        Page Content
+      </div>
+    </main>
+  </div>
+</DocumentFragment>
+`;

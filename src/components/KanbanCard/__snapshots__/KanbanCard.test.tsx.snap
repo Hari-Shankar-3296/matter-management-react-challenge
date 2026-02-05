@@ -1,0 +1,72 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`KanbanCard > renders ticket information correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="kanban-card  "
+    draggable="true"
+  >
+    <div
+      class="kanban-card-header"
+    >
+      <span
+        class="kanban-card-id"
+      >
+        #1
+      </span>
+      <div
+        class="kanban-card-actions"
+      >
+        <button
+          aria-label="Edit matter"
+          class="card-action-btn edit"
+        >
+          ✏️
+        </button>
+        <button
+          aria-label="Delete matter"
+          class="card-action-btn delete"
+        >
+          🗑️
+        </button>
+      </div>
+    </div>
+    <div
+      style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;"
+    >
+      <h4
+        class="kanban-card-title"
+        style="margin: 0px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;"
+        title="Test Ticket"
+      >
+        Test Ticket
+      </h4>
+    </div>
+    <p
+      class="kanban-card-description"
+    >
+      desc
+    </p>
+    <div
+      class="kanban-card-meta"
+    >
+      <div
+        style="display: flex; gap: 8px; align-items: center;"
+      >
+        <div
+          data-testid="badge"
+        >
+          high
+        </div>
+      </div>
+      <div>
+        <div
+          data-testid="assignee-selector"
+        >
+          AssigneeSelector
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,46 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AssigneeSelector > renders "Unassigned" when no assignee 1`] = `
+<DocumentFragment>
+  <div
+    style="position: relative; display: inline-block;"
+  >
+    <div
+      class="assignee-trigger hover:bg-slate-100 dark:hover:bg-slate-800"
+      style="cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 4px 8px; border-radius: 4px; transition: background-color 0.2s;"
+      title="Click to assign"
+    >
+      <span
+        style="color: var(--text-muted); font-style: italic; font-size: 0.9rem;"
+      >
+        + Assign
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`AssigneeSelector > renders assignee name when currentAssigneeId is provided 1`] = `
+<DocumentFragment>
+  <div
+    style="position: relative; display: inline-block;"
+  >
+    <div
+      class="assignee-trigger hover:bg-slate-100 dark:hover:bg-slate-800"
+      style="cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 4px 8px; border-radius: 4px; transition: background-color 0.2s;"
+      title="Click to assign"
+    >
+      <div
+        style="width: 24px; height: 24px; border-radius: 50%; background: var(--primary-500); color: white; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold; flex-shrink: 0;"
+      >
+        JD
+      </div>
+      <span
+        style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 120px;"
+      >
+        John Doe
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;

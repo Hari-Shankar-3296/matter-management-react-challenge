@@ -1,0 +1,837 @@
+
+> matter-management-react-challenge@1.0.0 test
+> vitest --coverage --run
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+
+ RUN  v1.6.1 /Users/gnanapriya/projects/matter-management-react-challenge
+      Coverage enabled with v8
+
+stderr | src/pages/LoginPage/LoginPage.test.tsx > LoginPage > renders login form correctly
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+stderr | src/pages/TicketsPage/TicketsPage.test.tsx > TicketsPage > renders page header and add button
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ ✓ src/pages/MyTicketsPage/MyTicketsPage.test.tsx  (3 tests) 39ms
+ ✓ src/components/TicketCard/TicketCard.test.tsx  (4 tests) 57ms
+ ✓ src/pages/KanbanPage/KanbanPage.test.tsx  (2 tests) 50ms
+stderr | src/components/Header/Header.test.tsx > Header Component > renders the app logo and name
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ ✓ src/pages/TicketsPage/TicketsPage.test.tsx  (4 tests) 63ms
+ ✓ src/components/Header/Header.test.tsx  (5 tests) 103ms
+ ✓ src/components/TicketForm/TicketForm.test.tsx  (4 tests) 120ms
+ ✓ src/pages/LoginPage/LoginPage.test.tsx  (4 tests) 123ms
+ ✓ src/hooks/useTickets/useTickets.test.tsx  (4 tests) 238ms
+ ✓ src/utils/dateUtils/dateUtils.test.ts  (10 tests) 4ms
+ ❯ src/components/TicketTableRow/TicketTableRow.test.tsx  (3 tests | 1 failed) 39ms
+   ❯ src/components/TicketTableRow/TicketTableRow.test.tsx > TicketTableRow > renders ticket data correctly
+     → Unable to find an element with the text: Oct 25, 2023. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<table>[39m
+      [36m<tbody>[39m
+        [36m<tr>[39m
+          [36m<td[39m
+            [33mclass[39m=[32m"ticket-id-cell"[39m
+          [36m>[39m
+            [0m#[0m
+            [0m1[0m
+          [36m</td>[39m
+          [36m<td[39m
+            [33mclass[39m=[32m"ticket-title-cell"[39m
+          [36m>[39m
+            [0mTest Ticket[0m
+          [36m</td>[39m
+          [36m<td>[39m
+            [36m<div[39m
+              [33mdata-testid[39m=[32m"badge"[39m
+            [36m>[39m
+              [0mopen[0m
+            [36m</div>[39m
+          [36m</td>[39m
+          [36m<td>[39m
+            [36m<div[39m
+              [33mdata-testid[39m=[32m"badge"[39m
+            [36m>[39m
+              [0mhigh[0m
+            [36m</div>[39m
+          [36m</td>[39m
+          [36m<td>[39m
+            [36m<div>[39m
+              [36m<div[39m
+                [33mdata-testid[39m=[32m"assignee-selector"[39m
+              [36m>[39m
+                [0mAssigneeSelector[0m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</td>[39m
+          [36m<td>[39m
+            [0m-[0m
+          [36m</td>[39m
+          [36m<td>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"table-actions"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"action-btn"[39m
+              [36m>[39m
+                [0m✏️[0m
+              [36m</button>[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"action-btn delete"[39m
+              [36m>[39m
+                [0m🗑️[0m
+              [36m</button>[39m
+            [36m</div>[39m
+          [36m</td>[39m
+        [36m</tr>[39m
+      [36m</tbody>[39m
+    [36m</table>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ✓ src/pages/DashboardPage/DashboardPage.test.tsx  (3 tests) 91ms
+ ✓ src/components/KanbanCard/KanbanCard.test.tsx  (3 tests) 54ms
+stderr | src/components/ProtectedRoute/ProtectedRoute.test.tsx > ProtectedRoute > renders children when authenticated
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ ✓ src/components/ProtectedRoute/ProtectedRoute.test.tsx  (3 tests) 30ms
+ ✓ src/components/Modal/Modal.test.tsx  (5 tests) 51ms
+ ❯ src/pages/UserProfilePage/UserProfilePage.test.tsx  (2 tests | 1 failed) 38ms
+   ❯ src/pages/UserProfilePage/UserProfilePage.test.tsx > UserProfilePage > renders user profile and ticket stats
+     → Found multiple elements with the text: john@example.com
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+[36m<p[39m
+  [33mclass[39m=[32m"profile-email"[39m
+[36m>[39m
+  [0mjohn@example.com[0m
+[36m</p>[39m
+
+Ignored nodes: comments, script, style
+[36m<span[39m
+  [33mclass[39m=[32m"detail-value"[39m
+[36m>[39m
+  [0mjohn@example.com[0m
+[36m</span>[39m
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"profile-page"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"profile-card"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"profile-header"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"profile-avatar"[39m
+          [36m>[39m
+            [0mJD[0m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"profile-info"[39m
+          [36m>[39m
+            [36m<h1>[39m
+              [0mJohn Doe[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"profile-email"[39m
+            [36m>[39m
+              [0mjohn@example.com[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"profile-section"[39m
+        [36m>[39m
+          [36m<h3>[39m
+            [0mAccount Details[0m
+          [36m</h3>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"profile-details"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"detail-row"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"detail-label"[39m
+              [36m>[39m
+                [0mUser ID[0m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"detail-value"[39m
+              [36m>[39m
+                [0m1[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"detail-row"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"detail-label"[39m
+              [36m>[39m
+                [0mFirst Name[0m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"detail-value"[39m
+              [36m>[39m
+                [0mJohn[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"detail-row"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"detail-label"[39m
+              [36m>[39m
+                [0mLast Name[0m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"detail-value"[39m
+              [36m>[39m
+                [0mDoe[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"detail-row"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"detail-label"[39m
+              [36m>[39m
+                [0mEmail[0m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"detail-value"[39m
+              [36m>[39m
+                [0mjohn@example.com[0m
+              [36m</span>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"profile-section"[39m
+        [36m>[39m
+          [36m<h3>[39m
+            [0mTeam Members[0m
+          [36m</h3>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"team-list"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"profile-actions"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"btn btn-secondary"[39m
+          [36m>[39m
+            [0mLogout[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ✓ src/components/AssigneeSelector/AssigneeSelector.test.tsx  (3 tests) 142ms
+ ✓ src/utils/queryKeys/queryKeys.test.ts  (11 tests) 6ms
+ ❯ src/components/KanbanColumn/KanbanColumn.test.tsx  (0 test)
+ ✓ src/components/TicketDetail/TicketDetail.test.tsx  (2 tests) 48ms
+stderr | src/pages/HomePage/HomePage.test.tsx > HomePage > renders correctly for unauthenticated user
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+stderr | src/components/TicketFiltersComponent/TicketFiltersComponent.test.tsx > TicketFiltersComponent > renders search input and dropdowns
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ ❯ src/pages/HomePage/HomePage.test.tsx  (2 tests | 1 failed) 42ms
+   ❯ src/pages/HomePage/HomePage.test.tsx > HomePage > renders correctly for unauthenticated user
+     → Snapshot `HomePage > renders correctly for unauthenticated user 1` mismatched
+ ✓ src/components/TicketFiltersComponent/TicketFiltersComponent.test.tsx  (3 tests) 58ms
+ ✓ src/components/Badge/Badge.test.tsx  (5 tests) 39ms
+ ✓ src/hooks/useUsers/useUsers.test.tsx  (2 tests) 132ms
+ ❯ src/components/TicketList/TicketList.test.tsx  (0 test)
+ ❯ src/components/TicketTable/TicketTable.test.tsx  (0 test)
+ ❯ src/components/Layout/Layout.test.tsx  (0 test)
+stderr | src/components/HeroSection/HeroSection.test.tsx > HeroSection > renders hero content for unauthenticated user
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ ✓ src/components/TeamMemberItem/TeamMemberItem.test.tsx  (1 test) 26ms
+ ✓ src/components/TicketListMini/TicketListMini.test.tsx  (3 tests) 33ms
+ ❯ src/components/HeroSection/HeroSection.test.tsx  (2 tests | 1 failed) 37ms
+   ❯ src/components/HeroSection/HeroSection.test.tsx > HeroSection > renders hero content for authenticated user
+     → Unable to find an element with the text: /Welcome back, John!/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mclass[39m=[32m"hero"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"hero-content"[39m
+      [36m>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"hero-title"[39m
+        [36m>[39m
+          [0mWelcome back, [0m
+          [36m<span[39m
+            [33mclass[39m=[32m"gradient-text"[39m
+          [36m>[39m
+            [0mJohn[0m
+          [36m</span>[39m
+          [0m![0m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"hero-subtitle"[39m
+        [36m>[39m
+          [0mManage your [0m
+          [0mmatters[0m
+          [0m efficiently with our modern matter management system. Track progress, collaborate with your team, and get things done.[0m
+        [36m</p>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"hero-actions"[39m
+        [36m>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"btn btn-primary btn-lg"[39m
+            [33mhref[39m=[32m"/tickets"[39m
+          [36m>[39m
+            [0mView All [0m
+            [0mMatters[0m
+          [36m</a>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"btn btn-secondary btn-lg"[39m
+            [33mhref[39m=[32m"/my-tickets"[39m
+          [36m>[39m
+            [0mMy [0m
+            [0mMatters[0m
+          [36m</a>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ✓ src/components/DashboardChart/DashboardChart.test.tsx  (2 tests) 49ms
+ ✓ src/components/StatCard/StatCard.test.tsx  (2 tests) 25ms
+ ✓ src/components/ProfileSection/ProfileSection.test.tsx  (1 test) 22ms
+ ✓ src/components/FeatureCard/FeatureCard.test.tsx  (1 test) 22ms
+ ✓ src/services/users/users.test.ts  (5 tests) 1009ms
+ ✓ src/services/api/api.test.ts  (11 tests) 3530ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/Layout/Layout.test.tsx [ src/components/Layout/Layout.test.tsx ]
+Error: Failed to resolve import "./Header" from "src/components/Layout/Layout.tsx". Does the file exist?
+ ❯ TransformPluginContext._formatError node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41
+ ❯ TransformPluginContext.error node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16
+ ❯ normalizeUrl node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23
+ ❯ async file:/Users/gnanapriya/projects/matter-management-react-challenge/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+ ❯ TransformPluginContext.transform node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7
+ ❯ PluginContainer.transform node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18
+ ❯ loadAndTransform node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  src/components/KanbanColumn/KanbanColumn.test.tsx [ src/components/KanbanColumn/KanbanColumn.test.tsx ]
+Error: Failed to resolve import "./KanbanCard" from "src/components/KanbanColumn/KanbanColumn.tsx". Does the file exist?
+ ❯ TransformPluginContext._formatError node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41
+ ❯ TransformPluginContext.error node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16
+ ❯ normalizeUrl node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23
+ ❯ async file:/Users/gnanapriya/projects/matter-management-react-challenge/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+ ❯ TransformPluginContext.transform node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7
+ ❯ PluginContainer.transform node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18
+ ❯ loadAndTransform node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  src/components/TicketList/TicketList.test.tsx [ src/components/TicketList/TicketList.test.tsx ]
+Error: Failed to resolve import "./TicketCard" from "src/components/TicketList/TicketList.tsx". Does the file exist?
+ ❯ TransformPluginContext._formatError node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41
+ ❯ TransformPluginContext.error node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16
+ ❯ normalizeUrl node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23
+ ❯ async file:/Users/gnanapriya/projects/matter-management-react-challenge/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+ ❯ TransformPluginContext.transform node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7
+ ❯ PluginContainer.transform node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18
+ ❯ loadAndTransform node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  src/components/TicketTable/TicketTable.test.tsx [ src/components/TicketTable/TicketTable.test.tsx ]
+Error: Failed to resolve import "./TicketTableRow" from "src/components/TicketTable/TicketTable.tsx". Does the file exist?
+ ❯ TransformPluginContext._formatError node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41
+ ❯ TransformPluginContext.error node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16
+ ❯ normalizeUrl node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23
+ ❯ async file:/Users/gnanapriya/projects/matter-management-react-challenge/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+ ❯ TransformPluginContext.transform node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7
+ ❯ PluginContainer.transform node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18
+ ❯ loadAndTransform node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/pages/HomePage/HomePage.test.tsx > HomePage > renders correctly for unauthenticated user
+Error: Snapshot `HomePage > renders correctly for unauthenticated user 1` mismatched
+
+- Expected
++ Received
+
+@@ -1,42 +1,14 @@
+  <DocumentFragment>
+    <div
+      class="home-page"
+    >
+-     <section
+-       class="hero"
++     <div
++       data-testid="hero"
+      >
+-       <div
+-         class="hero-content"
+-       >
+-         <h1
+-           class="hero-title"
+-         >
+-           Welcome to 
+-           <span
+-             class="gradient-text"
+-           >
+-             Matter Management
+-           </span>
+-         </h1>
+-         <p
+-           class="hero-subtitle"
+-         >
+-           Manage your matters efficiently with our modern matter management system. Track progress, collaborate with your team, and get things done.
+-         </p>
+-         <div
+-           class="hero-actions"
+-         >
+-           <a
+-             class="btn btn-primary btn-lg"
+-             href="/login"
+-           >
+-             Sign In
+-           </a>
+-         </div>
+-       </div>
+-     </section>
++       Hero: Welcome Guest
++     </div>
+      <section
+        class="features"
+      >
+        <h2
+          class="features-title"
+@@ -45,68 +17,28 @@
+        </h2>
+        <div
+          class="features-grid"
+        >
+          <div
+-           class="feature-card"
++           data-testid="feature"
+          >
+-           <div
+-             class="feature-icon"
+-           >
+-             📋
+-           </div>
+-           <h3>
+-             Matter Management
+-           </h3>
+-           <p>
+-             Create, edit, and delete matters with ease. Track status, priority, and due dates.
+-           </p>
++           Matter Management
+          </div>
+          <div
+-           class="feature-card"
++           data-testid="feature"
+          >
+-           <div
+-             class="feature-icon"
+-           >
+-             📊
+-           </div>
+-           <h3>
+-             Kanban Board
+-           </h3>
+-           <p>
+-             Visualize your workflow with drag-and-drop Kanban board.
+-           </p>
++           Kanban Board
+          </div>
+          <div
+-           class="feature-card"
++           data-testid="feature"
+          >
+-           <div
+-             class="feature-icon"
+-           >
+-             🔍
+-           </div>
+-           <h3>
+-             Smart Filters
+-           </h3>
+-           <p>
+-             Find matters quickly with powerful search and filter options.
+-           </p>
++           Smart Filters
+          </div>
+          <div
+-           class="feature-card"
++           data-testid="feature"
+          >
+-           <div
+-             class="feature-icon"
+-           >
+-             👥
+-           </div>
+-           <h3>
+-             Multi-User
+-           </h3>
+-           <p>
+-             Assign matters to team members and track who's working on what.
+-           </p>
++           Multi-User
+          </div>
+        </div>
+      </section>
+    </div>
+  </DocumentFragment>
+
+ ❯ src/pages/HomePage/HomePage.test.tsx:34:30
+     32|         );
+     33|         expect(screen.getByText(/Hero: Welcome Guest/i)).toBeDefined();
+     34|         expect(asFragment()).toMatchSnapshot();
+       |                              ^
+     35|     });
+     36| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  src/pages/UserProfilePage/UserProfilePage.test.tsx > UserProfilePage > renders user profile and ticket stats
+TestingLibraryElementError: Found multiple elements with the text: john@example.com
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+[36m<p[39m
+  [33mclass[39m=[32m"profile-email"[39m
+[36m>[39m
+  [0mjohn@example.com[0m
+[36m</p>[39m
+
+Ignored nodes: comments, script, style
+[36m<span[39m
+  [33mclass[39m=[32m"detail-value"[39m
+[36m>[39m
+  [0mjohn@example.com[0m
+[36m</span>[39m
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"profile-page"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"profile-card"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"profile-header"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"profile-avatar"[39m
+          [36m>[39m
+            [0mJD[0m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"profile-info"[39m
+          [36m>[39m
+            [36m<h1>[39m
+              [0mJohn Doe[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"profile-email"[39m
+            [36m>[39m
+              [0mjohn@example.com[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"profile-section"[39m
+        [36m>[39m
+          [36m<h3>[39m
+            [0mAccount Details[0m
+          [36m</h3>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"profile-details"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"detail-row"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"detail-label"[39m
+              [36m>[39m
+                [0mUser ID[0m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"detail-value"[39m
+              [36m>[39m
+                [0m1[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"detail-row"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"detail-label"[39m
+              [36m>[39m
+                [0mFirst Name[0m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"detail-value"[39m
+              [36m>[39m
+                [0mJohn[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"detail-row"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"detail-label"[39m
+              [36m>[39m
+                [0mLast Name[0m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"detail-value"[39m
+              [36m>[39m
+                [0mDoe[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"detail-row"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"detail-label"[39m
+              [36m>[39m
+                [0mEmail[0m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"detail-value"[39m
+              [36m>[39m
+                [0mjohn@example.com[0m
+              [36m</span>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"profile-section"[39m
+        [36m>[39m
+          [36m<h3>[39m
+            [0mTeam Members[0m
+          [36m</h3>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"team-list"[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"profile-actions"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"btn btn-secondary"[39m
+          [36m>[39m
+            [0mLogout[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getElementError node_modules/@testing-library/dom/dist/query-helpers.js:20:35
+ ❯ getMultipleElementsFoundError node_modules/@testing-library/dom/dist/query-helpers.js:23:10
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:55:13
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/pages/UserProfilePage/UserProfilePage.test.tsx:45:23
+     43|         const { asFragment } = render(<UserProfilePage />);
+     44|         expect(screen.getByText('John Doe')).toBeDefined();
+     45|         expect(screen.getByText('john@example.com')).toBeDefined();
+       |                       ^
+     46|         // The current implementation might not show counts if they ar…
+     47|         // Let's check based on actual component code (it shows Accoun…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+ FAIL  src/components/HeroSection/HeroSection.test.tsx > HeroSection > renders hero content for authenticated user
+TestingLibraryElementError: Unable to find an element with the text: /Welcome back, John!/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mclass[39m=[32m"hero"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"hero-content"[39m
+      [36m>[39m
+        [36m<h1[39m
+          [33mclass[39m=[32m"hero-title"[39m
+        [36m>[39m
+          [0mWelcome back, [0m
+          [36m<span[39m
+            [33mclass[39m=[32m"gradient-text"[39m
+          [36m>[39m
+            [0mJohn[0m
+          [36m</span>[39m
+          [0m![0m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"hero-subtitle"[39m
+        [36m>[39m
+          [0mManage your [0m
+          [0mmatters[0m
+          [0m efficiently with our modern matter management system. Track progress, collaborate with your team, and get things done.[0m
+        [36m</p>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"hero-actions"[39m
+        [36m>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"btn btn-primary btn-lg"[39m
+            [33mhref[39m=[32m"/tickets"[39m
+          [36m>[39m
+            [0mView All [0m
+            [0mMatters[0m
+          [36m</a>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"btn btn-secondary btn-lg"[39m
+            [33mhref[39m=[32m"/my-tickets"[39m
+          [36m>[39m
+            [0mMy [0m
+            [0mMatters[0m
+          [36m</a>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/HeroSection/HeroSection.test.tsx:26:23
+     24|             </BrowserRouter>
+     25|         );
+     26|         expect(screen.getByText(/Welcome back, John!/i)).toBeDefined();
+       |                       ^
+     27|         expect(screen.getByText(/View All/i)).toBeDefined();
+     28|         expect(asFragment()).toMatchSnapshot();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/8]⎯
+
+ FAIL  src/components/TicketTableRow/TicketTableRow.test.tsx > TicketTableRow > renders ticket data correctly
+TestingLibraryElementError: Unable to find an element with the text: Oct 25, 2023. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<table>[39m
+      [36m<tbody>[39m
+        [36m<tr>[39m
+          [36m<td[39m
+            [33mclass[39m=[32m"ticket-id-cell"[39m
+          [36m>[39m
+            [0m#[0m
+            [0m1[0m
+          [36m</td>[39m
+          [36m<td[39m
+            [33mclass[39m=[32m"ticket-title-cell"[39m
+          [36m>[39m
+            [0mTest Ticket[0m
+          [36m</td>[39m
+          [36m<td>[39m
+            [36m<div[39m
+              [33mdata-testid[39m=[32m"badge"[39m
+            [36m>[39m
+              [0mopen[0m
+            [36m</div>[39m
+          [36m</td>[39m
+          [36m<td>[39m
+            [36m<div[39m
+              [33mdata-testid[39m=[32m"badge"[39m
+            [36m>[39m
+              [0mhigh[0m
+            [36m</div>[39m
+          [36m</td>[39m
+          [36m<td>[39m
+            [36m<div>[39m
+              [36m<div[39m
+                [33mdata-testid[39m=[32m"assignee-selector"[39m
+              [36m>[39m
+                [0mAssigneeSelector[0m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</td>[39m
+          [36m<td>[39m
+            [0m-[0m
+          [36m</td>[39m
+          [36m<td>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"table-actions"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"action-btn"[39m
+              [36m>[39m
+                [0m✏️[0m
+              [36m</button>[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"action-btn delete"[39m
+              [36m>[39m
+                [0m🗑️[0m
+              [36m</button>[39m
+            [36m</div>[39m
+          [36m</td>[39m
+        [36m</tr>[39m
+      [36m</tbody>[39m
+    [36m</table>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/TicketTableRow/TicketTableRow.test.tsx:54:23
+     52|         expect(screen.getByText('#1')).toBeDefined();
+     53|         expect(screen.getByText('Test Ticket')).toBeDefined();
+     54|         expect(screen.getByText('Oct 25, 2023')).toBeDefined();
+       |                       ^
+     55|         expect(asFragment()).toMatchSnapshot();
+     56|     });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/8]⎯
+
+  Snapshots  1 failed
+ Test Files  8 failed | 27 passed (35)
+      Tests  4 failed | 111 passed (115)
+   Start at  03:15:06
+   Duration  4.43s (transform 1.04s, setup 3ms, collect 4.82s, tests 6.32s, environment 14.44s, prepare 2.53s)
+

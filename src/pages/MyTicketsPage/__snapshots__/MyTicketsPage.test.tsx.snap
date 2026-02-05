@@ -1,0 +1,41 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MyTicketsPage > renders tabs and assigned tickets by default 1`] = `
+<DocumentFragment>
+  <div
+    class="my-tickets-page"
+  >
+    <div
+      class="page-header"
+    >
+      <h1>
+        My Matters
+      </h1>
+    </div>
+    <div
+      class="tabs"
+    >
+      <button
+        class="tab active"
+      >
+        Assigned to Me (1)
+      </button>
+      <button
+        class="tab "
+      >
+        Reported by Me (1)
+      </button>
+    </div>
+    <div
+      data-testid="ticket-table"
+    >
+      <div>
+        Assigned 1
+        <button>
+          Edit
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

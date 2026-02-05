@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TeamMemberItem > renders member name and initials 1`] = `
+<DocumentFragment>
+  <div
+    class="team-member"
+  >
+    <div
+      class="member-avatar"
+    >
+      JD
+    </div>
+    <div
+      class="member-info"
+    >
+      <span
+        class="member-name"
+      >
+        John Doe
+      </span>
+      <span
+        class="member-email"
+      >
+        john@example.com
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;

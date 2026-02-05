@@ -1,0 +1,47 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TicketsPage > renders page header and add button 1`] = `
+<DocumentFragment>
+  <div
+    class="tickets-page"
+  >
+    <div
+      class="ticket-list-section"
+    >
+      <div
+        class="page-header"
+      >
+        <h1>
+          Matters
+        </h1>
+        <button
+          class="btn btn-primary"
+        >
+          + Add Matter
+        </button>
+      </div>
+      <div
+        data-testid="filters"
+      >
+        Filters
+      </div>
+      <div
+        data-testid="ticket-list"
+      >
+        <button>
+          Select Ticket 1
+        </button>
+      </div>
+    </div>
+    <div
+      class="ticket-detail-section"
+    >
+      <div
+        data-testid="ticket-detail"
+      >
+        No Selection
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

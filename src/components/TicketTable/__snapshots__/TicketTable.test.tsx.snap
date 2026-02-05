@@ -1,0 +1,67 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TicketTable > renders empty state when no tickets 1`] = `
+<DocumentFragment>
+  <div
+    class="empty-state"
+  >
+    <p>
+      No matters found
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TicketTable > renders table with rows when tickets are provided 1`] = `
+<DocumentFragment>
+  <div
+    class="tickets-table-container"
+  >
+    <table
+      class="tickets-table"
+    >
+      <thead>
+        <tr>
+          <th>
+            ID
+          </th>
+          <th>
+            Title
+          </th>
+          <th>
+            Status
+          </th>
+          <th>
+            Priority
+          </th>
+          <th>
+            Reporter
+          </th>
+          <th>
+            Due Date
+          </th>
+          <th>
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          data-testid="ticket-row"
+        >
+          <td>
+            Ticket 1
+          </td>
+        </tr>
+        <tr
+          data-testid="ticket-row"
+        >
+          <td>
+            Ticket 2
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</DocumentFragment>
+`;

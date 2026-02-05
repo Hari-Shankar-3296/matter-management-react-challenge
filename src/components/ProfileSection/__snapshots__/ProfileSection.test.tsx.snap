@@ -1,0 +1,18 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ProfileSection > renders title and children correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="profile-section"
+  >
+    <h3>
+      Test Title
+    </h3>
+    <div
+      data-testid="child"
+    >
+      Test Content
+    </div>
+  </div>
+</DocumentFragment>
+`;
