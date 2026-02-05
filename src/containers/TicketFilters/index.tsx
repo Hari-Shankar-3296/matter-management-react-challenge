@@ -11,7 +11,7 @@
  * - URL params for shareable state (bonus)
  */
 const TicketFilters = () => {
-  // TODO: Remove Redux usage - Redux is not installed
+  // TODO: Remove Redux usage - Redux is not installed TODO:
   // Replace with React useState or URL params
   // @ts-ignore - Redux not installed
   const dispatch = null; // useDispatch();

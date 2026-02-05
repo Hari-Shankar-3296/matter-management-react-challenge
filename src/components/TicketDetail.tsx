@@ -8,14 +8,14 @@ interface TicketDetailProps {
 const TicketDetail = ({ ticketId, ticketDetail }: TicketDetailProps) => {
   const [localData, setLocalData] = useState<any>(null);
 
-  // Unnecessary useEffect - just use ticketDetail directly
+  // Unnecessary useEffect - just use ticketDetail directly TODO: 
   useEffect(() => {
     if (ticketDetail) {
       setLocalData(ticketDetail);
     }
   }, [ticketDetail]);
 
-  // Another unnecessary useEffect
+  // Another unnecessary useEffect TODO: 
   useEffect(() => {
     if (ticketId) {
       console.log('Viewing ticket:', ticketId);

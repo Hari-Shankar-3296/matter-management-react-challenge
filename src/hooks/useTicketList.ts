@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getTicketKeys } from '../_api/queryKeys';
+import { getTicketKeys } from '../utils/queryKeys';
 
 export interface Ticket {
   id: string;

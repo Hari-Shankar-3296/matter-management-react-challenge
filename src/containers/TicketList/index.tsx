@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useTicketList } from './hooks/useTicketList';
-import TicketCard from './components/TicketCard';
+import { useTicketList } from '../../hooks/useTicketList';
+import TicketCard from '../../components/TicketCard';
 
 /**
  * TASK 2: This component has problematic useEffect usage

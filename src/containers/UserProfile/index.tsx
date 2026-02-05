@@ -1,5 +1,5 @@
 import { useMemo, useCallback, useState } from 'react';
-import { useGetUserProfile } from './hooks/useGetUserProfile';
+import { useGetUserProfile } from '../../hooks/useGetUserProfile';
 
 /**
  * TASK 1: Review this component and remove unnecessary useMemo/useCallback

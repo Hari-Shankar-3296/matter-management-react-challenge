@@ -14,7 +14,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import TicketList from '../../components/TicketList';
 import TicketDetail from '../../components/TicketDetail';
-import { fetchTickets, fetchTicketById } from '../../utils/api';
+import { fetchTickets, fetchTicketById } from '../../services/api';
 
 const TicketsPage = () => {
   const { ticketId } = useParams<{ ticketId?: string }>();
@@ -57,27 +57,27 @@ const TicketsPage = () => {
   // Unnecessary useMemo - simple array operations don't need memoization
   const filteredTickets = useMemo(() => {
     if (!ticketsData) return [];
-    
+
     let filtered = ticketsData;
-    
+
     if (memoizedSearchQuery) {
-      filtered = filtered.filter(ticket => 
+      filtered = filtered.filter(ticket =>
         ticket.title.toLowerCase().includes(memoizedSearchQuery)
       );
     }
-    
+
     if (filterStatus !== 'all') {
       filtered = filtered.filter(ticket => ticket.status === filterStatus);
     }
-    
+
     if (sortBy === 'date') {
-      filtered = [...filtered].sort((a, b) => 
+      filtered = [...filtered].sort((a, b) =>
         new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
       );
     } else {
       filtered = [...filtered].sort((a, b) => a.title.localeCompare(b.title));
     }
-    
+
     return filtered;
   }, [ticketsData, memoizedSearchQuery, filterStatus, sortBy]);
 

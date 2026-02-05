@@ -14,7 +14,7 @@ interface TicketListProps {
 }
 
 const TicketList = ({ tickets, onSelect, selectedId }: TicketListProps) => {
-  // Unnecessary useMemo - this is just rendering, no expensive computation
+  // Unnecessary useMemo - this is just rendering, no expensive computation TODO: add in render logic itself
   const ticketItems = useMemo(() => {
     return tickets.map(ticket => (
       <div
