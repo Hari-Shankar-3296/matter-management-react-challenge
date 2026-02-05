@@ -6,7 +6,7 @@ import CheckBoxLogo from '../assets/images/CheckBoxLogo.svg';
 import { APP_NAME, ROUTES } from '../constants';
 
 const Header = () => {
-    const { toggleTheme } = useTheme();
+    const { theme, toggleTheme } = useTheme();
     const { user, logout, isAuthenticated } = useAuth();
     const navigate = useNavigate();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -38,7 +38,7 @@ const Header = () => {
         <header className="header">
             <div className="header-container">
                 <NavLink to={ROUTES.DASHBOARD} className="header-logo">
-                    <div style={{ height: '50px', width: '220px', backgroundColor: '#afafafff', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '10px' }}>
+                    <div style={{ height: '50px', width: '220px', backgroundColor: theme === 'dark' ? 'transparent' : '#000000ff', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '10px' }}>
                         <img src={CheckBoxLogo} alt="Logo" style={{ height: '40px', width: '200px' }} />
                     </div>
                     <span className="logo-text">{APP_NAME}</span>
