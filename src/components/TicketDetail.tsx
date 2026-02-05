@@ -1,39 +1,22 @@
-import { useEffect, useState } from 'react';
+import { Ticket } from '../types';
 
 interface TicketDetailProps {
-  ticketId: string;
-  ticketDetail: any;
+  ticketDetail: Ticket | null | undefined;
 }
 
-const TicketDetail = ({ ticketId, ticketDetail }: TicketDetailProps) => {
-  const [localData, setLocalData] = useState<any>(null);
-
-  // Unnecessary useEffect - just use ticketDetail directly TODO: 
-  useEffect(() => {
-    if (ticketDetail) {
-      setLocalData(ticketDetail);
-    }
-  }, [ticketDetail]);
-
-  // Another unnecessary useEffect TODO: 
-  useEffect(() => {
-    if (ticketId) {
-      console.log('Viewing ticket:', ticketId);
-    }
-  }, [ticketId]);
-
-  if (!localData) {
+const TicketDetail = ({ ticketDetail }: TicketDetailProps) => {
+  if (!ticketDetail) {
     return <div>Loading ticket details...</div>;
   }
 
   return (
     <div>
-      <h2>{localData.title}</h2>
+      <h2>{ticketDetail.title}</h2>
       <div style={{ marginTop: '20px' }}>
-        <p><strong>Status:</strong> {localData.status}</p>
-        <p><strong>Created:</strong> {new Date(localData.createdAt).toLocaleString()}</p>
+        <p><strong>Status:</strong> {ticketDetail.status}</p>
+        <p><strong>Created:</strong> {new Date(ticketDetail.createdAt).toLocaleString()}</p>
         <p><strong>Description:</strong></p>
-        <p>{localData.description || 'No description available'}</p>
+        <p>{ticketDetail.description || 'No description available'}</p>
       </div>
     </div>
   );
